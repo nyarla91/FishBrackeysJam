@@ -10,7 +10,6 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateHealth(float percent)
     {
-        print(percent);
         _healthForeground.sizeDelta = new Vector2(_healthBackground.rect.width * percent, 0);
     }
 }

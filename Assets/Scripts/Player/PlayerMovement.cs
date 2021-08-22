@@ -20,6 +20,11 @@ public class PlayerMovement : Transformer
     private bool _dashReady = true;
 
     private int _freezeControls;
+    public int FreezeControls
+    {
+        get => _freezeControls;
+        set => _freezeControls = Mathf.Clamp(value, 0, Int32.MaxValue);
+    }
 
     private void Awake()
     {
@@ -29,7 +34,7 @@ public class PlayerMovement : Transformer
 
     private void FixedUpdate()
     {
-        if (_freezeControls == 0)
+        if (FreezeControls == 0)
             Move();
     }
 
@@ -46,7 +51,7 @@ public class PlayerMovement : Transformer
         if (!_dashReady || dashDirection.magnitude <= 0)
             yield break;
         _dashReady = false;
-        _freezeControls++;
+        FreezeControls++;
         BezierCurve curve = new BezierCurve(new Vector3[4]);
         Vector2 targetPoint = (Vector2) transform.position + dashDirection * _dashDistance;
         curve.SetPoint(0, transform.position);
@@ -58,7 +63,7 @@ public class PlayerMovement : Transformer
            transform.position = curve.Evaluate(i / _dashDuration);
             yield return null;
         }
-        _freezeControls--;
+        FreezeControls--;
         yield return new WaitForSeconds(_dashCooldown);
         _dashReady = true;
     }

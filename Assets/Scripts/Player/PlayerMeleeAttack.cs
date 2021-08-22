@@ -19,7 +19,6 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        print("gg");
         if (!_attackReady)
             yield break;
         _attackReady = false;

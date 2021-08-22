@@ -18,6 +18,9 @@ public class EnemyStatus : EnemyComponent
         }
     }
 
+    public delegate void DeathHandler();
+    public DeathHandler OnDeath;
+
     private void Start()
     {
         Health = _healthMax;
@@ -26,5 +29,22 @@ public class EnemyStatus : EnemyComponent
     public void TakeDamage(float damage)
     {
         Health -= damage;
+        if (Health <= 0)
+        {
+            if (OnDeath != null)
+            {
+                OnDeath();
+            }
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<ProjectileDamage>() != null)
+        {
+            TakeDamage(other.gameObject.GetComponent<ProjectileDamage>().damage);
+            Destroy(other.gameObject);
+        }
     }
 }
