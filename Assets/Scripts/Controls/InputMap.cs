@@ -41,6 +41,14 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""577acbdf-18b9-4091-a2b0-a2f25147f435"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +128,17 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""action"": ""RangedAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52cb8092-7d1d-4a18-89dd-0e87d0550a66"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -148,6 +167,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_MeleeAttack = m_Gameplay.FindAction("MeleeAttack", throwIfNotFound: true);
         m_Gameplay_RangedAttack = m_Gameplay.FindAction("RangedAttack", throwIfNotFound: true);
+        m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -200,6 +220,7 @@ public class @InputMap : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_MeleeAttack;
     private readonly InputAction m_Gameplay_RangedAttack;
+    private readonly InputAction m_Gameplay_Dash;
     public struct GameplayActions
     {
         private @InputMap m_Wrapper;
@@ -207,6 +228,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @MeleeAttack => m_Wrapper.m_Gameplay_MeleeAttack;
         public InputAction @RangedAttack => m_Wrapper.m_Gameplay_RangedAttack;
+        public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -225,6 +247,9 @@ public class @InputMap : IInputActionCollection, IDisposable
                 @RangedAttack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRangedAttack;
                 @RangedAttack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRangedAttack;
                 @RangedAttack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRangedAttack;
+                @Dash.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -238,6 +263,9 @@ public class @InputMap : IInputActionCollection, IDisposable
                 @RangedAttack.started += instance.OnRangedAttack;
                 @RangedAttack.performed += instance.OnRangedAttack;
                 @RangedAttack.canceled += instance.OnRangedAttack;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -256,5 +284,6 @@ public class @InputMap : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnMeleeAttack(InputAction.CallbackContext context);
         void OnRangedAttack(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }
