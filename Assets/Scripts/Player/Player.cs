@@ -11,6 +11,12 @@ public class Player : Transformer
     [SerializeField] private PlayerMovement _movement;
     public static PlayerMovement Movement => _instance._movement;
     
+    [SerializeField] private PlayerUI _ui;
+    public static PlayerUI UI => _instance._ui;
+    
+    [SerializeField] private PlayerStatus _status;
+    public static PlayerStatus Status => _instance._status;
+    
     public static Transform Transform => _instance.transform;
 
     private void Awake()
