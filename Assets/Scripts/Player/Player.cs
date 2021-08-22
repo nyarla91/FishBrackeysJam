@@ -17,6 +17,12 @@ public class Player : Transformer
     [SerializeField] private PlayerStatus _status;
     public static PlayerStatus Status => _instance._status;
     
+    [SerializeField] private PlayerMeleeAttack _meleeAttack;
+    public static PlayerMeleeAttack MeleeAttack => _instance._meleeAttack;
+    
+    [SerializeField] private PlayerRangedAttack _rangedAttack;
+    public static PlayerRangedAttack RangedAttack => _instance._rangedAttack;
+    
     public static Transform Transform => _instance.transform;
 
     private void Awake()

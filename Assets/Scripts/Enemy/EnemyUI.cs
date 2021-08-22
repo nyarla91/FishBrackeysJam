@@ -10,6 +10,6 @@ public class EnemyUI : EnemyComponent
 
     public void SetHealth(float percent)
     {
-        _healthForeground.sizeDelta = new Vector2(percent, 0f);
+        _healthForeground.sizeDelta = new Vector2(_healthBackground.rect.width * percent, 0f);
     }
 }
