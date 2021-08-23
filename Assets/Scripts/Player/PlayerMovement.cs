@@ -60,7 +60,7 @@ public class PlayerMovement : Transformer
         curve.SetPoint(3, targetPoint);
         for (float i = 0; i < _dashDuration * 1.3f; i += Time.deltaTime)
         {
-           transform.position = curve.Evaluate(i / _dashDuration);
+            _rigidbody.MovePosition(curve.Evaluate(i / _dashDuration));
             yield return null;
         }
         FreezeControls--;

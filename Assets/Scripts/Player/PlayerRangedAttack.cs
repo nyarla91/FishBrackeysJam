@@ -21,7 +21,6 @@ public class PlayerRangedAttack : MonoBehaviour
     {
         if (!_attackReady)
             yield break;
-        print("gg");
         _attackReady = false;
         Player.Movement.FreezeControls++;
 
