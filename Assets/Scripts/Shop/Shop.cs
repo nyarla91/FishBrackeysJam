@@ -11,6 +11,7 @@ public class Shop : Transformer
 
     [SerializeField] private ShopTab _startingTab;
     
+    private List<IShopWindow> _windows = new List<IShopWindow>();
     private float targetX = -1920;
 
     private void Awake()
@@ -22,6 +23,19 @@ public class Shop : Transformer
     private void FixedUpdate()
     {
         rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, new Vector2(targetX, 0), 0.25f);
+    }
+
+    public static void AddIShopWindow(IShopWindow added)
+    {
+        _instance._windows.Add(added);
+    }
+
+    public static void GenerateContent()
+    {
+        foreach (var window in _instance._windows)
+        {
+            window.GenerateContent();
+        }
     }
 
     public static void Show()

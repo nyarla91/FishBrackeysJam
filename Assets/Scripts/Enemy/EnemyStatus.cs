@@ -8,7 +8,7 @@ public class EnemyStatus : EnemyComponent
 {
     [SerializeField] private float _healthMax;
     [SerializeField] private GameObject _lootPrefab;
-    [SerializeField] private EnemyLoot _loot;
+    [SerializeField] private FishInfo _loot;
 
     private float _health;
     public float Health

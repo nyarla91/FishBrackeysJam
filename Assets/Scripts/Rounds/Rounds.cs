@@ -21,6 +21,10 @@ public class Rounds : MonoBehaviour
             _currentPhase = value;
             bool shop = CurrentPhase == Phase.Shop;
             CameraControl.TargetPoint = new Vector2(shop ? -5 : 0, 0);
+            if (shop)
+            {
+                Shop.GenerateContent();
+            }
         }
     }
 
@@ -33,7 +37,8 @@ public class Rounds : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(OngoingRound(_rounds[0]));
+        CurrentPhase = Phase.Shop;
+        //StartCoroutine(OngoingRound(_rounds[0]));
     }
 
     private IEnumerator OngoingRound(Round currentRound)

@@ -10,11 +10,11 @@ public class LootOnGround : MonoBehaviour
     [SerializeField] private Collider2D _collider;
 
     private Vector2 _targetPoint;    
-    private EnemyLoot _loot;
-    public EnemyLoot Loot => _loot;
+    private FishInfo _loot;
+    public FishInfo Loot => _loot;
 
 
-    public void Init(Vector2 targetPoint, EnemyLoot loot)
+    public void Init(Vector2 targetPoint, FishInfo loot)
     {
         _loot = loot;
         _spriteRenderer.sprite = _loot.Sprite;
