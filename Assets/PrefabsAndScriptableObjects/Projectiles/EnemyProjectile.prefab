@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513c255ee69ee6746aa3b54912eae639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lerpScale: 1
 --- !u!114 &2209652059018835416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a9d079a2f81c349a9866772b56eabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
 --- !u!50 &2209652059018835417
 Rigidbody2D:
   serializedVersion: 4
