@@ -335,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265998292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.425, y: 0.255, z: 0}
+  m_LocalPosition: {x: 7.425, y: 0.255, z: 1}
   m_LocalScale: {x: 3.7927244, y: 11.965944, z: 1}
   m_Children:
   - {fileID: 1001869052}
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slashPrefab: {fileID: 1665533666154624290, guid: 9a733b35ba0cfbc4fb39fedf05a41d9b, type: 3}
   _attackBox: {x: 3, y: 2}
-  _damage: 5
+  _damage: 20
   _cooldown: 0.5
 --- !u!114 &2021513993
 MonoBehaviour:
@@ -1267,5 +1267,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hookPrefab: {fileID: 6283361435462037607, guid: 49928ab100fdc65408f2ed64be87a10e, type: 3}
-  _hookSpeed: 0.4
+  _hookSpeed: 0.25
   _cooldown: 0.5

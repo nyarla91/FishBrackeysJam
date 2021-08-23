@@ -8,8 +8,8 @@ public class Round : ScriptableObject
     [SerializeField] private float _duration;
     public float Duration => _duration;
 
-    [SerializeField] private float _levelModifier;
-    public float LevelModifier => _levelModifier;
+    [SerializeField] private float _levelDivider;
+    public float LevelDivider => _levelDivider;
     
     [SerializeField] private List<EnemyForRound> _enemies;
     public List<EnemyForRound> Enemies => _enemies;

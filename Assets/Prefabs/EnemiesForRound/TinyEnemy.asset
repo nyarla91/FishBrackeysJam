@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d93668f39b9a84997782015798d3b2, type: 3}
-  m_Name: ArcEnemy
+  m_Name: TinyEnemy
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 5489912112577850342, guid: 33e8aedf36f53184cba146d092285e39, type: 3}
-  _level: 6
+  _enemy: {fileID: 7327940204071320579, guid: 8388c177264aab74696ad6b195fdd7e9, type: 3}
+  _level: 1.5

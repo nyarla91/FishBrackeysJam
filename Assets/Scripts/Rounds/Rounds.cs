@@ -25,14 +25,13 @@ public class Rounds : MonoBehaviour
         {
             EnemyForRound newEnemy = CollectionHelper.ChooseRandomElement(currentRound.Enemies);
             
-            float delay = newEnemy.Level * currentRound.LevelModifier;
+            float delay = newEnemy.Level / currentRound.LevelDivider;
             if (timeRemaning < currentRound.Duration) // First enemy appears without delay
                 yield return new WaitForSeconds(delay);
             timeRemaning -= delay;
             
             Vector3 position = VectorHelper.RandomPointInBounds(_enemyPlacementBounds.bounds);
             Instantiate(newEnemy.Enemy, position, Quaternion.identity);
-            print(timeRemaning);
         }
     }
 }

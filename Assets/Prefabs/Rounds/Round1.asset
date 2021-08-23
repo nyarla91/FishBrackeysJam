@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ce7f33e2a40af4f8173eff51254ad2, type: 3}
   m_Name: Round1
   m_EditorClassIdentifier: 
-  _duration: 15
-  _levelModifier: 2
+  _duration: 40
+  _levelDivider: 0.7
   _enemies:
   - {fileID: 11400000, guid: c8cd52339ecf1964e923043529533e17, type: 2}
   - {fileID: 11400000, guid: 69953594bd3cc9a468ed930349e88f74, type: 2}
+  - {fileID: 11400000, guid: 4ed28bb3684e0bb4eb9554a4718dce60, type: 2}
