@@ -23,6 +23,9 @@ public class Player : Transformer
     [SerializeField] private PlayerRangedAttack _rangedAttack;
     public static PlayerRangedAttack RangedAttack => _instance._rangedAttack;
     
+    [SerializeField] private PlayerInventory _inventory;
+    public static PlayerInventory Inventory => _instance._inventory;
+    
     public static Transform Transform => _instance.transform;
 
     private void Awake()

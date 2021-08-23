@@ -2,10 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class EnemyStatus : EnemyComponent
 {
     [SerializeField] private float _healthMax;
+    [SerializeField] private GameObject _lootPrefab;
+    [SerializeField] private EnemyLoot _loot;
 
     private float _health;
     public float Health
@@ -29,14 +32,17 @@ public class EnemyStatus : EnemyComponent
     public void TakeDamage(float damage)
     {
         Health -= damage;
-        if (Health <= 0)
-        {
-            if (OnDeath != null)
-            {
-                OnDeath();
-            }
-            Destroy(gameObject);
-        }
+        if (Health <= 0) Die();
+    }
+
+    private void Die()
+    {
+        if (OnDeath != null) OnDeath();
+
+        Rounds.instance.enemies.Remove(gameObject);
+        LootOnGround newLoot = Instantiate(_lootPrefab, transform.position, Quaternion.identity).GetComponent<LootOnGround>();
+        newLoot.Init(LootArea.RandomPoint(), _loot);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
