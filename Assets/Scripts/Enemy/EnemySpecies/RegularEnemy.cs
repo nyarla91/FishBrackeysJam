@@ -20,7 +20,7 @@ public class RegularEnemy : Enemy
         while (true)
         {
             ProjectileDirectionMovement newProjectile =
-                Instantiate(_projectilePrefab, transform.position, Quaternion.identity).GetComponent<ProjectileDirectionMovement>();
+                ProjectileLifecycle.Create<ProjectileDirectionMovement>(_projectilePrefab, transform.position);
             Vector2 direction = Player.Transform.position - transform.position;
             newProjectile.Init(direction, _projectileSpeed);
             yield return new WaitForSeconds(_shootPeriod);

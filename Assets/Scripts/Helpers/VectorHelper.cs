@@ -135,6 +135,13 @@ namespace NyarlaEssentials
         {
             return new Vector3(vector.x, 0, vector.y);
         }
+
+        public static Vector2 RandomPointInBounds(Bounds bounds)
+        {
+            Vector2 max = bounds.max;
+            Vector2 min = bounds.min;
+            return new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
+        }
     }
 
     public enum Axis

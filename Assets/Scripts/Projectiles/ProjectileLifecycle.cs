@@ -15,4 +15,10 @@ public class ProjectileLifecycle : MonoBehaviour
             OnProjectileDestroy();
         Destroy(gameObject);
     }
+
+    public static T Create<T>(GameObject prefab, Vector3 position)
+    {
+        T newProjectile = Instantiate(prefab, position, Quaternion.identity).GetComponent<T>();
+        return newProjectile;
+    }
 }
