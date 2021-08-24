@@ -6,6 +6,15 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] private float _healthMax;
+    public float HealthMax
+    {
+        get => _healthMax;
+        set
+        {
+            _healthMax = value;
+            Player.UI.UpdateHealth(_health, _healthMax);
+        }
+    }
 
     private float _health;
 
@@ -15,13 +24,13 @@ public class PlayerStatus : MonoBehaviour
         private set
         {
             _health = value;
-            Player.UI.UpdateHealth(_health / _healthMax);
+            Player.UI.UpdateHealth(_health, _healthMax);
         }
     }
 
     private void Start()
     {
-        Health = _healthMax / 7;
+        Health = _healthMax / 2;
     }
 
     public void TakeDamage(float damage)

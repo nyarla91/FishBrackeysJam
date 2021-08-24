@@ -20,6 +20,7 @@ public class Items : MonoBehaviour
         {
             _itemEffects.Add(itemToAdd.Name, itemToAdd.Effect);
         }
+        PerformOneTimeBuyEffect(itemToAdd);
     }
 
     public static int GetEffect(string effectName)
@@ -35,8 +36,10 @@ public class Items : MonoBehaviour
     {
         switch (item.Name)
         {
-            case "shiny_shell":
+            case "health":
             {
+                Player.Status.HealthMax += item.Effect;
+                Player.Status.RestoreHealth(item.Effect);
                 break;
             }
         }
