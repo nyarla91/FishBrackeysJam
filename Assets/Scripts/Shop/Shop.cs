@@ -31,7 +31,6 @@ public class Shop : Transformer
     {
         _instance = this;
         Money = 0;
-        Show();
     }
 
     private void FixedUpdate()
@@ -56,10 +55,15 @@ public class Shop : Transformer
     {
         _instance.targetX = 0;
         _instance._startingTab.Open();
+        Player.Movement.FreezeControls++;
     }
     
     public static void Hide()
     {
         _instance.targetX = -2000;
+        Player.Movement.FreezeControls--;
+        NextRoundArea.readyToReturn = true;
     }
+
+    public void Close() => Hide();
 }

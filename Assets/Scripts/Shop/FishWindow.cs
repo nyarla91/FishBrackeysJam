@@ -22,6 +22,11 @@ public class FishWindow : ShopWindow, IShopWindow
 
     public void GenerateContent()
     {
+        foreach (var fishCard in _fishCards.Values)
+        {
+            Destroy(fishCard.gameObject);
+        }
+        
         _content.sizeDelta = new Vector2(40, _content.sizeDelta.y);
         List<FishInfo> inventory = Player.Inventory.fish;
         _fishCards = new Dictionary<FishInfo, FishCard>();

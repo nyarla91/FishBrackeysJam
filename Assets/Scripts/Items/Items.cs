@@ -32,6 +32,15 @@ public class Items : MonoBehaviour
         return 0;
     }
 
+    public static float GetEffectAsPercent(string effectName)
+    {
+        if (_itemEffects.ContainsKey(effectName))
+        {
+            return 1 + (float) _itemEffects[effectName] / 100;
+        }
+        return 1;
+    }
+
     public static void PerformOneTimeBuyEffect(ItemInfo item)
     {
         switch (item.Name)

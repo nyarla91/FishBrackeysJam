@@ -29,7 +29,7 @@ public class PlayerMeleeAttack : MonoBehaviour
         foreach (var overlap in overlaps)
         {
             if (overlap.GetComponent<EnemyStatus>() != null)
-                overlap.GetComponent<EnemyStatus>().TakeDamage(_damage);
+                overlap.GetComponent<EnemyStatus>().TakeDamage(_damage * Items.GetEffectAsPercent("melee_damage"));
         }
         yield return new WaitForSeconds(_cooldown);
         Destroy(slash.gameObject);

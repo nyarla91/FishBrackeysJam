@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthMax: 60
   _lootPrefab: {fileID: 4605455515749277364, guid: a9528f548c609cf42bbd29807a952da0, type: 3}
-  _loot: {fileID: 11400000, guid: e8bde65b6a5b0f34a889b339cb7b5621, type: 2}
+  _loot: {fileID: 11400000, guid: 4533e780d34f525458ed52d733c09fb8, type: 2}
 --- !u!114 &5489912112577850338
 MonoBehaviour:
   m_ObjectHideFlags: 0

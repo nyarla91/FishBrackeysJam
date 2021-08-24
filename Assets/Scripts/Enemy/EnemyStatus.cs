@@ -49,7 +49,7 @@ public class EnemyStatus : EnemyComponent
     {
         if (other.gameObject.GetComponent<ProjectileDamage>() != null)
         {
-            TakeDamage(other.gameObject.GetComponent<ProjectileDamage>().damage);
+            TakeDamage(other.gameObject.GetComponent<ProjectileDamage>().damage * Items.GetEffectAsPercent("hook_damage"));
             Destroy(other.gameObject);
         }
     }

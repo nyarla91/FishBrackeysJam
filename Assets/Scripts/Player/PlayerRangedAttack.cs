@@ -28,7 +28,7 @@ public class PlayerRangedAttack : MonoBehaviour
         ProjectileDirectionMovement newProjectile =
             Instantiate(_hookPrefab, transform.position, Quaternion.identity).GetComponent<ProjectileDirectionMovement>();
         
-        newProjectile.Init(direction, _hookSpeed);
+        newProjectile.Init(direction, _hookSpeed * Items.GetEffectAsPercent("hook_speed"));
         ProjectileLifecycle projectileLifecycle = newProjectile.GetComponent<ProjectileLifecycle>();
         bool destroyed = false;
         projectileLifecycle.OnProjectileDestroy += () => ProjectileDestroyed(ref destroyed);
