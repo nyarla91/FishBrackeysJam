@@ -27,6 +27,24 @@ namespace NyarlaEssentials
             }
             return choosed;
         }
+        public static List<T> TakeAwayRandomElements<T>(ref List<T> collection, int ammount)
+        {
+            List<T> choosed = new List<T>();
+            for (int i = 0; i < ammount; i++)
+            {
+                if (collection.Count > 0)
+                {
+                    T element = collection[Random.Range(0, collection.Count)];
+                    choosed.Add(element);
+                    collection.Remove(element);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return choosed;
+        }
 
         public static T ChooseRandomElement<T>(List<T> collection)
         {

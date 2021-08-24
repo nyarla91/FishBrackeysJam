@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FishWindow : ShopWindow, IShopWindow
 {
+    private const float FISH_CARD_WIDTH = 300;
+    
     private static FishWindow _instance;
     
     [SerializeField] private GameObject _fishCardPrefab;
@@ -32,9 +34,9 @@ public class FishWindow : ShopWindow, IShopWindow
                 continue;
             }
             FishCard newCard = Instantiate(_fishCardPrefab, _content).GetComponent<FishCard>();
-            _content.sizeDelta = new Vector2(_content.sizeDelta.x + 350, _content.sizeDelta.y);
-            newCard.rectTransform.anchoredPosition = new Vector2(20 + _fishCards.Count * 350, newCard.rectTransform.anchoredPosition.y);
-            newCard.rectTransform.sizeDelta = new Vector2(350, -40);
+            _content.sizeDelta = new Vector2(_content.sizeDelta.x + FISH_CARD_WIDTH, _content.sizeDelta.y);
+            newCard.rectTransform.anchoredPosition = new Vector2(20 + _fishCards.Count * FISH_CARD_WIDTH, newCard.rectTransform.anchoredPosition.y);
+            newCard.rectTransform.sizeDelta = new Vector2(FISH_CARD_WIDTH, -40);
             newCard.Init(fish);
             _fishCards.Add(fish, newCard);
         }
@@ -50,7 +52,7 @@ public class FishWindow : ShopWindow, IShopWindow
         List<FishCard> fishCards = _instance._fishCards.Values.ToList();
         for (int i = 0; i < fishCards.Count; i++)
         {
-            fishCards[i].TargetX = 20 + 350 * i;
+            fishCards[i].TargetX = 20 + FISH_CARD_WIDTH * i;
         }
     }
 }
