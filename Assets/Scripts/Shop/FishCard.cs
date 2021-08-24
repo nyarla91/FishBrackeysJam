@@ -63,11 +63,13 @@ public class FishCard : Transformer
 
     public void Eat()
     {
+        Player.Status.RestoreHealth(_fish.HealthRestored);
         Spend();
     }
 
     public void Sell()
     {
+        Shop.Money += _fish.Cost;
         Spend();
     }
 

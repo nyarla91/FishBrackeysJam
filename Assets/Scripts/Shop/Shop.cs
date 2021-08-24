@@ -10,13 +10,27 @@ public class Shop : Transformer
     private static Shop _instance;
 
     [SerializeField] private ShopTab _startingTab;
+    [SerializeField] private TextMeshProUGUI _moneyCounter;
     
     private List<IShopWindow> _windows = new List<IShopWindow>();
     private float targetX = -1920;
 
+    private int _money;
+
+    public static int Money
+    {
+        get => _instance._money;
+        set
+        {
+            _instance._money = value;
+            _instance._moneyCounter.text = $"{value} $";
+        }
+    }
+
     private void Awake()
     {
         _instance = this;
+        Money = 0;
         Show();
     }
 
