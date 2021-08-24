@@ -37,4 +37,21 @@ public class ItemInInventory : Transformer
     {
         Ammount++;
     }
+
+    public void ShowTooltip()
+    {
+        string ability = _item.PureDisplayAbility;
+        string newEffect = $"{_item.Effect}";
+        if (_ammount > 1)
+        {
+            newEffect += $"({_item.Effect * _ammount})";
+        }
+        StringHelper.Replace(ref ability, "<X>", newEffect);
+        ItemTooltip.instance.Show(_item.DisplayName, ability);
+    }
+
+    public void HideTooltip()
+    {
+        ItemTooltip.instance.Hide();
+    }
 }
