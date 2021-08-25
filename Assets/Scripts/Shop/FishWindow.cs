@@ -39,9 +39,9 @@ public class FishWindow : ShopWindow, IShopWindow
                 continue;
             }
             FishCard newCard = Instantiate(_fishCardPrefab, _content).GetComponent<FishCard>();
-            _content.sizeDelta = new Vector2(_content.sizeDelta.x + FISH_CARD_WIDTH, _content.sizeDelta.y);
-            newCard.rectTransform.anchoredPosition = new Vector2(20 + _fishCards.Count * FISH_CARD_WIDTH, newCard.rectTransform.anchoredPosition.y);
-            newCard.rectTransform.sizeDelta = new Vector2(FISH_CARD_WIDTH, -40);
+            _content.sizeDelta = new Vector2(_content.sizeDelta.x + (FISH_CARD_WIDTH + 20), _content.sizeDelta.y);
+            newCard.rectTransform.anchoredPosition = new Vector2(40 + _fishCards.Count * (FISH_CARD_WIDTH + 20), newCard.rectTransform.anchoredPosition.y);
+            newCard.rectTransform.sizeDelta = new Vector2(FISH_CARD_WIDTH, -80);
             newCard.Init(fish);
             _fishCards.Add(fish, newCard);
         }
@@ -57,7 +57,7 @@ public class FishWindow : ShopWindow, IShopWindow
         List<FishCard> fishCards = _instance._fishCards.Values.ToList();
         for (int i = 0; i < fishCards.Count; i++)
         {
-            fishCards[i].TargetX = 20 + FISH_CARD_WIDTH * i;
+            fishCards[i].TargetX = 40 + (FISH_CARD_WIDTH + 20) * i;
         }
     }
 }

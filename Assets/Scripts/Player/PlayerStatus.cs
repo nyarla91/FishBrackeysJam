@@ -47,7 +47,6 @@ public class PlayerStatus : MonoBehaviour
 
     public void RestoreHealth(float healthRestored)
     {
-        print(healthRestored);
         Health = Mathf.Clamp(Health + healthRestored, 0, _healthMax);
     }
 
