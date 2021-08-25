@@ -32,7 +32,7 @@ public class PlayerRangedAttack : MonoBehaviour
         ProjectileLifecycle projectileLifecycle = newProjectile.GetComponent<ProjectileLifecycle>();
         bool destroyed = false;
         projectileLifecycle.OnProjectileDestroy += () => ProjectileDestroyed(ref destroyed);
-        
+        newProjectile.GetComponent<ProjectileDamage>().damage = Rods.CurrentRodHookDamage * Items.GetEffectAsPercent("hook_damage");
         yield return new WaitUntil(() => destroyed);
         Player.Movement.FreezeControls--;
 

@@ -7,7 +7,6 @@ public class PlayerMeleeAttack : MonoBehaviour
 {
     [SerializeField] private GameObject _slashPrefab;
     [SerializeField] private Vector2 _attackBox;
-    [SerializeField] private float _damage;
     [SerializeField] private float _cooldown;
 
     private bool _attackReady = true;
@@ -28,8 +27,9 @@ public class PlayerMeleeAttack : MonoBehaviour
         Collider2D[] overlaps = Physics2D.OverlapBoxAll(overlapPosition, _attackBox, 0);
         foreach (var overlap in overlaps)
         {
+            float damage = Rods.CurrentRodMeleeDamage * Items.GetEffectAsPercent("melee_damage");
             if (overlap.GetComponent<EnemyStatus>() != null)
-                overlap.GetComponent<EnemyStatus>().TakeDamage(_damage * Items.GetEffectAsPercent("melee_damage"));
+                overlap.GetComponent<EnemyStatus>().TakeDamage(damage);
         }
         yield return new WaitForSeconds(_cooldown);
         Destroy(slash.gameObject);

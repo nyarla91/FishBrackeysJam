@@ -47,9 +47,9 @@ public class EnemyStatus : EnemyComponent
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<ProjectileDamage>() != null)
+        if (other.gameObject.GetComponent<ProjectileLifecycle>() != null)
         {
-            TakeDamage(other.gameObject.GetComponent<ProjectileDamage>().damage * Items.GetEffectAsPercent("hook_damage"));
+            TakeDamage(other.gameObject.GetComponent<ProjectileDamage>().damage);
             Destroy(other.gameObject);
         }
     }

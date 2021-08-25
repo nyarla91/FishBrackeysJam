@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves: 
   _enemies: []
+  _costMultiplier: 1
+  _rodStatsMultiplier: 1

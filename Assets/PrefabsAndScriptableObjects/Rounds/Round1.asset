@@ -17,3 +17,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c8cd52339ecf1964e923043529533e17, type: 2}
   - {fileID: 11400000, guid: 69953594bd3cc9a468ed930349e88f74, type: 2}
   - {fileID: 11400000, guid: 4ed28bb3684e0bb4eb9554a4718dce60, type: 2}
+  _costMultiplier: 1
+  _rodStatsMultiplier: 1

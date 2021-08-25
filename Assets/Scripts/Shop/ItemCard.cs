@@ -28,21 +28,24 @@ public class ItemCard : MonoBehaviour
 
     private bool Permanent => _soldOutOverlay == null;
 
+    private int _countedCost;
+
     public void Init(ItemInfo item)
     {
         Sold = false;
         _item = item;
         _name.text = _item.DisplayName;
-        _cost.text = $"{_item.Cost} $";
+        _countedCost = Mathf.RoundToInt(_item.Cost * Rounds.CostMultiplier);
+        _cost.text = $"{_countedCost} $";
         _ability.text = _item.DisplayAbility;
         _sprite.sprite = _item.Sprite;
     }
 
     public void Buy()
     {
-        if (Shop.Money >= _item.Cost)
+        if (Shop.Money >= _countedCost)
         {
-            Shop.Money -= _item.Cost;
+            Shop.Money -= _countedCost;
             Sold = true;
             Player.UI.AddItem(_item);
             Items.AddItem(_item);

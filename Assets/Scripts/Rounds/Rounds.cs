@@ -26,16 +26,19 @@ public class Rounds : MonoBehaviour
             }
             else if (_currentPhase == Phase.Shop)
             {
+                currentRoundIndex++;
                 if (currentRoundIndex < _rounds.Length)
                     StartCoroutine(OngoingRound(_rounds[currentRoundIndex]));
-                currentRoundIndex++;
             }
             _currentPhase = value;
         }
     }
 
     public List<GameObject> enemies;
-    private int currentRoundIndex;
+    private int currentRoundIndex = -1;
+
+    public static float CostMultiplier => instance._rounds[instance.currentRoundIndex].CostMultiplier;
+    public static float RodStatsMultiplier => instance._rounds[instance.currentRoundIndex].RodStatsMultiplier;
 
     private void Awake()
     {
