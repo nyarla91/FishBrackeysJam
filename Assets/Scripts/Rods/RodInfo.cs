@@ -9,6 +9,9 @@ public class RodInfo : ScriptableObject
     [SerializeField] private string _name;
     public string Name => _name;
     
+    [SerializeField] private string _displayName;
+    public string DisplayName => _displayName;
+    
     [SerializeField] private Sprite _sprite;
     public Sprite Sprite => _sprite;
 

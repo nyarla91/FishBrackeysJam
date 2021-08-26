@@ -17,7 +17,14 @@ public class Rods : MonoBehaviour
         }
     }
 
-    public static float CurrentRodStatsMultiplier { get; set; }
+    private static float _currentRodStatsMultiplier = 1;
+
+    public static float CurrentRodStatsMultiplier
+    {
+        get => _currentRodStatsMultiplier;
+        set => _currentRodStatsMultiplier = value;
+    }
+    
     public static int CurrentRodHookDamage => Mathf.RoundToInt(CurrentRod.HookDamage * CurrentRodStatsMultiplier);
     public static int CurrentRodMeleeDamage => Mathf.RoundToInt(CurrentRod.MeleeDamage * CurrentRodStatsMultiplier);
 

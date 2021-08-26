@@ -26,6 +26,12 @@ public class Player : Transformer
     [SerializeField] private PlayerInventory _inventory;
     public static PlayerInventory Inventory => _instance._inventory;
     
+    [SerializeField] private PlayerAnimation _animation;
+    public static PlayerAnimation Animation => _instance._animation;
+    
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    public static SpriteRenderer SpriteRenderer => _instance._spriteRenderer;
+    
     public static Transform Transform => _instance.transform;
 
     private void Awake()

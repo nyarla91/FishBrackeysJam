@@ -37,7 +37,7 @@ public class RodCard : MonoBehaviour
     {
         Sold = false;
         _rod = rod;
-        _name.text = _rod.Name;
+        _name.text = _rod.DisplayName;
         _countedCost = Mathf.RoundToInt(rod.Cost * Rounds.CostMultiplier);
         _cost.text = $"{_countedCost} $";
         _ability.text = _rod.Description;
