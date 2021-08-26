@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca7c3b8e64f9de1499d8e13d1f11016f, type: 3}
-  m_Name: VampireRod
+  m_Name: ScrapleRod
   m_EditorClassIdentifier: 
-  _name: vampire
-  _displayName: Vampire rod
-  _spriteFull: {fileID: -6569109414003131091, guid: 6b2d4e723016e3e458c9aeb9207cffca, type: 3}
-  _spriteAttack: {fileID: -8381752504004796880, guid: 6b2d4e723016e3e458c9aeb9207cffca, type: 3}
+  _name: scraple
+  _displayName: Scraple Rod
+  _spriteFull: {fileID: -8817966619579822038, guid: 6a1f5fb97bd85c54285829ccd2769a60, type: 3}
+  _spriteAttack: {fileID: -4626199238161512748, guid: 6a1f5fb97bd85c54285829ccd2769a60, type: 3}
   _cost: 100
   _hookDamage: 12
-  _meleeDamage: 24
-  _effects: 05000000
-  _description: Restore <X0>% from damage this rod deals.
+  _meleeDamage: 18
+  _effects: 
+  _description: After killing an enemy gain immunity for 1.5 seconds

@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca7c3b8e64f9de1499d8e13d1f11016f, type: 3}
-  m_Name: WindRod
+  m_Name: RitualRod
   m_EditorClassIdentifier: 
-  _name: Wind rod
-  _sprite: {fileID: -7706723734610405839, guid: a34edc56e75d7c647be5cc079b8fbc3e, type: 3}
+  _name: ritual
+  _displayName: Ritual rod
+  _spriteFull: {fileID: -8041313804677231208, guid: b4fb8826c74cdb74db4096eccd877838, type: 3}
+  _spriteAttack: {fileID: -552179032436233340, guid: b4fb8826c74cdb74db4096eccd877838, type: 3}
   _cost: 100
   _hookDamage: 17
   _meleeDamage: 16
-  _effects: 
-  _description: You can move while throuwing the hook
+  _effects: 19000000
+  _description: Kill <X0> enemies to gain great power

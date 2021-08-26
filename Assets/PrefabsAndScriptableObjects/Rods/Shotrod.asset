@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7c3b8e64f9de1499d8e13d1f11016f, type: 3}
+  m_Name: Shotrod
+  m_EditorClassIdentifier: 
+  _name: shotrod
+  _displayName: Shotrod
+  _spriteFull: {fileID: 701807211547410047, guid: 5f76d94468ea3fa428c94ed23baeb4f4, type: 3}
+  _spriteAttack: {fileID: -3656100045052398913, guid: 5f76d94468ea3fa428c94ed23baeb4f4, type: 3}
+  _cost: 100
+  _hookDamage: 10
+  _meleeDamage: 16
+  _effects: 0500000014000000
+  _description: Also shoots <X0> bullets. Each of them deals <X1>% of your hook damage.

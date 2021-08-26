@@ -31,6 +31,7 @@ public class RodInHands : Transformer
     private IEnumerator Throw(ProjectileLifecycle hook, float cooldown, Vector2 direction)
     {
         attacking = true;
+        _spriteRenderer.sprite = Rods.CurrentRod.SpriteAttack;
         _lineRenderer.enabled = true;
         direction.x = Mathf.Abs(direction.x);
         
@@ -83,6 +84,7 @@ public class RodInHands : Transformer
         }
         _lineRenderer.enabled = false;
         attacking = false;
+        _spriteRenderer.sprite = Rods.CurrentRod.SpriteFull;
     }
 
     private void CooldownStart(ref Vector2 hookLastPosition, ProjectileLifecycle hook)
@@ -97,6 +99,7 @@ public class RodInHands : Transformer
 
     private IEnumerator Hit(float duration)
     {
+        _spriteRenderer.sprite = Rods.CurrentRod.SpriteFull;
         attacking = true;
         _graphics.localScale = Vector3.one * 1.5f;
         SpriteRenderer _slash = Instantiate(_slashPrefab, transform.position + Vector3.forward, Quaternion.identity).GetComponentInChildren<SpriteRenderer>();

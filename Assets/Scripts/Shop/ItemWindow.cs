@@ -13,8 +13,9 @@ public class ItemWindow : ShopWindow, IShopWindow
     
     private List<ItemInfo> _itemsPool = new List<ItemInfo>();
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         foreach (var pool in _itemPoolsPool)
         {
             for (int i = 0; i < pool.Ammount; i++)

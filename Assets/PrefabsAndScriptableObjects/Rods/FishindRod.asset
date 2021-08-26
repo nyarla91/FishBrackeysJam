@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7c3b8e64f9de1499d8e13d1f11016f, type: 3}
   m_Name: FishindRod
   m_EditorClassIdentifier: 
-  _name: Fishing rod
-  _sprite: {fileID: -3260171324595997514, guid: a34edc56e75d7c647be5cc079b8fbc3e, type: 3}
+  _name: basic
+  _displayName: Fishing rod
+  _spriteFull: {fileID: -5365736768485744686, guid: 4b32a01781059a9439e4217d6a96a937, type: 3}
+  _spriteAttack: {fileID: -7817118122914509082, guid: 4b32a01781059a9439e4217d6a96a937, type: 3}
   _cost: 100
   _hookDamage: 12
   _meleeDamage: 18

@@ -16,12 +16,13 @@ public class RodCard : MonoBehaviour
     [SerializeField] private GameObject _soldOutOverlay;
 
     private RodInfo _rod;
+    public RodInfo Rod => _rod;
     private bool _sold;
 
-    private bool Sold
+    public bool Sold
     {
         get => _sold;
-        set
+        private set
         {
             _sold = value;
             if (!Current)
@@ -41,7 +42,7 @@ public class RodCard : MonoBehaviour
         _countedCost = Mathf.RoundToInt(rod.Cost * Rounds.CostMultiplier);
         _cost.text = $"{_countedCost} $";
         _ability.text = _rod.Description;
-        _sprite.sprite = _rod.Sprite;
+        _sprite.sprite = _rod.SpriteFull;
         _hookDamage.text = Mathf.RoundToInt(_rod.HookDamage * Rounds.RodStatsMultiplier).ToString();
         _meleeDamage.text = Mathf.RoundToInt(_rod.MeleeDamage * Rounds.RodStatsMultiplier).ToString();
     }
