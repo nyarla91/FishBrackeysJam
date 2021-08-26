@@ -9,7 +9,20 @@ public class ItemWindow : ShopWindow, IShopWindow
     [SerializeField] private List<ItemCard> _randomizedCards;
     
     [SerializeField] private ItemInfo _permanentItem;
-    [SerializeField] private List<ItemInfo> _itemsPool;
+    [SerializeField] private List<ItemPool> _itemPoolsPool;
+    
+    private List<ItemInfo> _itemsPool = new List<ItemInfo>();
+
+    private void Awake()
+    {
+        foreach (var pool in _itemPoolsPool)
+        {
+            for (int i = 0; i < pool.Ammount; i++)
+            {
+                _itemsPool.Add(pool.Item);
+            }
+        }
+    }
 
     public void GenerateContent()
     {
@@ -20,4 +33,14 @@ public class ItemWindow : ShopWindow, IShopWindow
             _randomizedCards[i].Init(items[i]);
         }
     }
+}
+
+[System.Serializable]
+public class ItemPool
+{
+    [SerializeField] private ItemInfo _item;
+    public ItemInfo Item => _item;
+
+    [SerializeField] private int ammount;
+    public int Ammount => ammount;
 }

@@ -50,7 +50,6 @@ public class FishCard : Transformer
         Ammount = 1;
         _fish = fish;
         _sprite.sprite = _fish.Sprite;
-        _sprite.rectTransform.sizeDelta = _fish.SpriteScale;
         _eatText.text = $"Eat ({_fish.HealthRestored} HP)";
         _sellText.text = $"Sell ({_fish.Cost} $)";
         TargetX = rectTransform.anchoredPosition.x;

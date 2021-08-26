@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerMeleeAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject _slashPrefab;
     [SerializeField] private Vector2 _attackBox;
     [SerializeField] private float _cooldown;
 
@@ -18,12 +17,11 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        if (!_attackReady)
+        if (!_attackReady || RodInHands.instance.attacking)
             yield break;
         _attackReady = false;
         Vector2 overlapPosition = (Vector2) transform.position + new Vector2(_attackBox.x * 0.5f, 0);
-        Transform slash = Instantiate(_slashPrefab, overlapPosition, Quaternion.identity).transform;
-        slash.localScale = _attackBox;
+        RodInHands.instance.HitStart(_cooldown);
         Collider2D[] overlaps = Physics2D.OverlapBoxAll(overlapPosition, _attackBox, 0);
         foreach (var overlap in overlaps)
         {
@@ -32,7 +30,6 @@ public class PlayerMeleeAttack : MonoBehaviour
                 overlap.GetComponent<EnemyStatus>().TakeDamage(damage);
         }
         yield return new WaitForSeconds(_cooldown);
-        Destroy(slash.gameObject);
         _attackReady = true;
     }
 }

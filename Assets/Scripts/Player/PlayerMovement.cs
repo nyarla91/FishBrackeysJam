@@ -47,8 +47,9 @@ public class PlayerMovement : Transformer
         {
             Player.Animation.Play(PlayerAnimation.Walk);
             _movementAxes = Vector2.Lerp(_movementAxes, inputAxes, _acceleration);
-            _rigidbody.MovePosition(_rigidbody.position + _movementAxes * _speed);
-            Player.SpriteRenderer.flipX = inputAxes.x < 0 || Player.SpriteRenderer.flipX && inputAxes.x == 0;
+            _rigidbody.MovePosition(_rigidbody.position + _movementAxes * _speed * Items.GetEffectAsPercent("walk_speed"));
+            bool flip = inputAxes.x < 0 || transform.localScale.x < 0 && inputAxes.x == 0;
+            transform.localScale = new Vector3(flip ? -1 : 1, 1, 1);
         }
         else
         {
@@ -63,6 +64,7 @@ public class PlayerMovement : Transformer
             yield break;
         _dashReady = false;
         FreezeControls++;
+        RodInHands.instance.Hide();
         Player.Animation.Play(PlayerAnimation.DashStart);
         BezierCurve curve = new BezierCurve(new Vector3[4]);
         Vector2 targetPoint = (Vector2) transform.position + dashDirection * _dashDistance;
@@ -81,6 +83,7 @@ public class PlayerMovement : Transformer
         Player.Animation.Play(PlayerAnimation.DashEnd);
         yield return new WaitForSeconds(_dashEndDelay);
         FreezeControls--;
+        RodInHands.instance.Show();
         yield return new WaitForSeconds(_dashCooldown);
         _dashReady = true;
     }

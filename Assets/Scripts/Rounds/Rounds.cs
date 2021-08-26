@@ -43,6 +43,10 @@ public class Rounds : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
         CurrentPhase = Phase.Combat;
     }
 
@@ -64,6 +68,11 @@ public class Rounds : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         CurrentPhase = Phase.Shop;
+    }
+
+    private IEnumerator FishMove()
+    {
+        yield break;
     }
 }
 

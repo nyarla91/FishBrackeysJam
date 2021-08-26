@@ -19,12 +19,13 @@ public class PlayerRangedAttack : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        if (!_attackReady)
+        if (!_attackReady || RodInHands.instance.attacking)
             yield break;
         _attackReady = false;
         Player.Movement.FreezeControls++;
 
         Vector2 direction = CameraProperties.MousePosition2D - transform.position;
+        transform.localScale = new Vector3(direction.x > 0 ? 1 : -1, 1, 1);
         ProjectileDirectionMovement newProjectile =
             Instantiate(_hookPrefab, transform.position, Quaternion.identity).GetComponent<ProjectileDirectionMovement>();
         
@@ -33,6 +34,7 @@ public class PlayerRangedAttack : MonoBehaviour
         bool destroyed = false;
         projectileLifecycle.OnProjectileDestroy += () => ProjectileDestroyed(ref destroyed);
         newProjectile.GetComponent<ProjectileDamage>().damage = Rods.CurrentRodHookDamage * Items.GetEffectAsPercent("hook_damage");
+        RodInHands.instance.ThrowStart(projectileLifecycle, _cooldown, direction);
         yield return new WaitUntil(() => destroyed);
         Player.Movement.FreezeControls--;
 
