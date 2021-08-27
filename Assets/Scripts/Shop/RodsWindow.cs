@@ -14,7 +14,7 @@ public class RodsWindow : ShopWindow, IShopWindow
     {
         foreach (var rodCard in _randomizedRods)
         {
-            if (!rodCard.Sold)
+            if (!rodCard.Sold && rodCard.Rod != null & !rodCard.Current)
                 _rodPool.Add(rodCard.Rod);
         }
         _currentRod.Init(Rods.CurrentRod);

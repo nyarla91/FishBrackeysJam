@@ -30,7 +30,7 @@ public class RodCard : MonoBehaviour
         }
     }
 
-    private bool Current => _soldOutOverlay == null;
+    public bool Current => _soldOutOverlay == null;
 
     private int _countedCost;
 
@@ -39,8 +39,13 @@ public class RodCard : MonoBehaviour
         Sold = false;
         _rod = rod;
         _name.text = _rod.DisplayName;
-        _countedCost = Mathf.RoundToInt(rod.Cost * Rounds.CostMultiplier);
-        _cost.text = $"{_countedCost} $";
+        _countedCost = 0;
+        if (!Rods.CurrentRod.Name.Equals("golden"))
+            _countedCost = Mathf.RoundToInt(rod.Cost * Rounds.CostMultiplier);
+        if (Current)
+            _cost.text = $"";
+        else
+            _cost.text = $"{_countedCost} $";
         _ability.text = _rod.Description;
         _sprite.sprite = _rod.SpriteFull;
         _hookDamage.text = Mathf.RoundToInt(_rod.HookDamage * Rounds.RodStatsMultiplier).ToString();

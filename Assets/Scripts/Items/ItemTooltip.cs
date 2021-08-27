@@ -32,7 +32,6 @@ public class ItemTooltip : Transformer
     {
         yield return null;
         float height = _ability.bounds.size.y + 100;
-        print(height);
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, height);
     }
 

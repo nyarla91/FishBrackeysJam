@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using NyarlaEssentials;
 using UnityEngine;
 
 public class Items : MonoBehaviour
 {
     private static Dictionary<string, int> _itemEffects = new Dictionary<string, int>();
     private static List<ItemInfo> _items = new List<ItemInfo>();
-
 
     public static void AddItem(ItemInfo itemToAdd)
     {
@@ -36,9 +36,9 @@ public class Items : MonoBehaviour
     {
         if (_itemEffects.ContainsKey(effectName))
         {
-            return 1 + (float) _itemEffects[effectName] / 100;
+            return (float) _itemEffects[effectName] / 100;
         }
-        return 1;
+        return 0;
     }
 
     public static void PerformOneTimeBuyEffect(ItemInfo item)
@@ -49,6 +49,21 @@ public class Items : MonoBehaviour
             {
                 Player.Status.HealthMax += item.Effect;
                 Player.Status.RestoreHealth(item.Effect);
+                break;
+            }
+            case "fish_heal":
+            {
+                FishWindow.ReinitFish();
+                break;
+            }
+            case "far_defence":
+            {
+                SeaDistanceBorder.ShowBorder();
+                break;
+            }
+            case "close_defence":
+            {
+                SeaDistanceBorder.ShowBorder();
                 break;
             }
         }

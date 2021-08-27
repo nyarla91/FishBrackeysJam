@@ -19,5 +19,5 @@ MonoBehaviour:
   _cost: 100
   _hookDamage: 12
   _meleeDamage: 18
-  _effects: 
-  _description: After killing an enemy gain immunity for 1.5 seconds
+  _effects: 01000000
+  _description: After killing an enemy gain immunity for <X0> seconds

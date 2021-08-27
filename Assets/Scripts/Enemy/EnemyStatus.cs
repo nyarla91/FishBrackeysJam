@@ -10,7 +10,7 @@ public class EnemyStatus : EnemyComponent
     [SerializeField] private GameObject _lootPrefab;
     [SerializeField] private FishInfo _loot;
 
-    private float _health;
+    [SerializeField] private float _health;
     public float Health
     {
         get => _health;
@@ -29,9 +29,31 @@ public class EnemyStatus : EnemyComponent
         Health = _healthMax;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool melee)
     {
+        float totalBonus = 1;
+        
+        //Bonus calculation
+        if (Rods.CurrentRod.Name.Equals("berserker"))
+            totalBonus += 1 - Player.Status.HealthPercent;
+        if (melee)
+        {
+            totalBonus += Items.GetEffectAsPercent("melee_damage");
+        }
+        else
+        {
+            totalBonus += Items.GetEffectAsPercent("hook_damage");
+        }
+        totalBonus += Items.GetEffectAsPercent("no_immune");
+        damage *= totalBonus;
+        if (Items.GetEffect("triple") > 0)
+            damage *= 3;
+        
         Health -= damage;
+        if (Rods.CurrentRod.Name.Equals("vampire"))
+        {
+            Player.Status.RestoreHealth(Rods.CurrentRod.GetEffectAsPercent(0) * damage);
+        }
         if (Health <= 0) Die();
     }
 
@@ -42,6 +64,14 @@ public class EnemyStatus : EnemyComponent
         Rounds.instance.enemies.Remove(gameObject);
         LootOnGround newLoot = Instantiate(_lootPrefab, transform.position, Quaternion.identity).GetComponent<LootOnGround>();
         newLoot.Init(LootArea.RandomPoint(), _loot);
+        if (Rods.CurrentRod.Name.Equals("scraple"))
+        {
+            Player.Status.Immunity(Rods.CurrentRod.Effects[0]);
+        }
+        else if (Rods.CurrentRod.Name.Equals("ritual"))
+        {
+            Rods.RitualKills++;
+        }
         Destroy(gameObject);
     }
 
@@ -49,7 +79,7 @@ public class EnemyStatus : EnemyComponent
     {
         if (other.gameObject.GetComponent<ProjectileLifecycle>() != null)
         {
-            TakeDamage(other.gameObject.GetComponent<ProjectileDamage>().damage);
+            TakeDamage(other.gameObject.GetComponent<ProjectileDamage>().damage, false);
             Destroy(other.gameObject);
         }
     }

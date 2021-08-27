@@ -92,30 +92,50 @@ public class RodInHands : Transformer
         hookLastPosition = hook.transform.position;
     }
 
-    public void HitStart(float duration)
+    public void HitStart(float duration, float xScale)
     {
-        StartCoroutine(Hit(duration));
+        StartCoroutine(Hit(duration, xScale));
     }
 
-    private IEnumerator Hit(float duration)
+    private IEnumerator Hit(float duration, float xScale)
     {
         _spriteRenderer.sprite = Rods.CurrentRod.SpriteFull;
         attacking = true;
-        _graphics.localScale = Vector3.one * 1.5f;
-        SpriteRenderer _slash = Instantiate(_slashPrefab, transform.position + Vector3.forward, Quaternion.identity).GetComponentInChildren<SpriteRenderer>();
-        _slash.transform.parent = transform.parent;
-        float angle = 60;
-        for (float i = 0; i < duration; i += Time.deltaTime)
+        if (!Rods.CurrentRod.Name.Equals("spearod"))
         {
-            angle = Mathf.Lerp(angle, -60, 14 * Time.deltaTime);
-            transform.localRotation = Quaternion.Euler(0, 0, angle);
-            float alpha = 1 - MathHelper.Evaluate(angle, -60, 60);
-            _slash.color = new Color(1 ,1 , 1, alpha);
-            yield return null;
+            _graphics.localScale = Vector3.one * 1.5f;
+            SpriteRenderer _slash = Instantiate(_slashPrefab, transform.position + Vector3.forward, Quaternion.identity).GetComponentInChildren<SpriteRenderer>();
+            _slash.transform.localPosition = _slash.transform.localPosition * new Vector2(xScale, 1);
+            _slash.transform.localScale = new Vector3(xScale, 1, 1);
+            _slash.transform.parent = transform.parent;
+            float angle = 60;
+            for (float i = 0; i < duration; i += Time.deltaTime)
+            {
+                angle = Mathf.Lerp(angle, -60, 14 * Time.deltaTime);
+                transform.localRotation = Quaternion.Euler(0, 0, angle);
+                float alpha = 1 - MathHelper.Evaluate(angle, -60, 60);
+                _slash.color = new Color(1 ,1 , 1, alpha);
+                yield return null;
+            }
+            Destroy(_slash.gameObject);
+        }
+        else
+        {
+            print("spearod");
+            _graphics.localScale = Vector3.one * 2;
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            float xOffset = 0;
+            Vector3 startingPosition = transform.localPosition;
+            for (float i = 0; i < duration; i += Time.deltaTime)
+            {
+                xOffset = Mathf.Lerp(xOffset, 1, 14 * Time.deltaTime);
+                transform.localPosition = startingPosition + new Vector3(xOffset, 0, 0);
+                yield return null;
+            }
+            transform.localPosition = startingPosition;
         }
         transform.localRotation = Quaternion.Euler(0, 0, 60);
         _graphics.localScale = Vector3.one;
-        Destroy(_slash.gameObject);
         attacking = false;
     }
 

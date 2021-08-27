@@ -45,4 +45,13 @@ public class RodInfo : ScriptableObject
             return result;
         }
     }
+
+    public float GetEffectAsPercent(int index)
+    {
+        if (_effects.Count > index)
+        {
+            return (float) _effects[index] / 100;
+        }
+        return 1;
+    }
 }

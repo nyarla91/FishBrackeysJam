@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577e8d138a0589442b5bbb4463490bb1, type: 3}
   m_Name: ToyShark
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 8040196581939011165, guid: dc6118fcecf8cf540bd7e4638f92e6cc, type: 3}
-  _cost: 70
+  _sprite: {fileID: 21300000, guid: 506edb2e0fd014347bdfd11dc3fd1516, type: 3}
+  _cost: 20
   _displayName: Toy shark
-  _name: iframe
-  _effect: 1
-  _displayAbility: +<X> second of invulnerability after taking damage.
+  _name: close_defence
+  _effect: 10
+  _displayAbility: -<X>% taken damage while you are close to the sea

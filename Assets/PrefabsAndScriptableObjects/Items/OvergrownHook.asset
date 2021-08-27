@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577e8d138a0589442b5bbb4463490bb1, type: 3}
+  m_Name: OvergrownHook
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 21300000, guid: bc2cc86790397b948968cc858320aebe, type: 3}
+  _cost: 20
+  _displayName: Overgrown hook
+  _name: half_health_hook_speed
+  _effect: 50
+  _displayAbility: After you health falls below 50% gain +<X>% hook speed until the
+    end of the round

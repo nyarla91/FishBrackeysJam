@@ -19,5 +19,5 @@ MonoBehaviour:
   _cost: 100
   _hookDamage: 17
   _meleeDamage: 16
-  _effects: 19000000
+  _effects: 14000000
   _description: Kill <X0> enemies to gain great power

@@ -47,7 +47,7 @@ public class PlayerMovement : Transformer
         {
             Player.Animation.Play(PlayerAnimation.Walk);
             _movementAxes = Vector2.Lerp(_movementAxes, inputAxes, _acceleration);
-            _rigidbody.MovePosition(_rigidbody.position + _movementAxes * _speed * Items.GetEffectAsPercent("walk_speed"));
+            _rigidbody.MovePosition(_rigidbody.position + _speed * (1 + Items.GetEffectAsPercent("walk_speed")) * _movementAxes);
             bool flip = inputAxes.x < 0 || transform.localScale.x < 0 && inputAxes.x == 0;
             transform.localScale = new Vector3(flip ? -1 : 1, 1, 1);
         }

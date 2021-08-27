@@ -225,6 +225,7 @@ MonoBehaviour:
   _arcDegree: 120
   _shootPeriod: 1.5
   _projectileSpeed: 0.12
+  _maxDelay: 1.5
 --- !u!114 &8742872132756540414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +241,7 @@ MonoBehaviour:
   _healthMax: 35
   _lootPrefab: {fileID: 4605455515749277364, guid: a9528f548c609cf42bbd29807a952da0, type: 3}
   _loot: {fileID: 11400000, guid: 953c6918574b5364893c7b3d8212aa64, type: 2}
+  _health: 0
 --- !u!114 &8742872132756540415
 MonoBehaviour:
   m_ObjectHideFlags: 0

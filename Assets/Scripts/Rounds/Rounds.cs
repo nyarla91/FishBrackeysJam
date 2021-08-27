@@ -22,6 +22,7 @@ public class Rounds : MonoBehaviour
             CameraControl.TargetPoint = new Vector2(shop ? -5 : 0, 0);
             if (shop)
             {
+                Player.Status.HealthFellBelowHalf = false;
                 Shop.GenerateContent();
             }
             else if (_currentPhase == Phase.Shop)

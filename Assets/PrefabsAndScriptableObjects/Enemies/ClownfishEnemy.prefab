@@ -212,9 +212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374d1d97a9e9029479dbc62e0bcd4705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthMax: 30
+  _healthMax: 60
   _lootPrefab: {fileID: 4605455515749277364, guid: a9528f548c609cf42bbd29807a952da0, type: 3}
   _loot: {fileID: 11400000, guid: 83bcdc7cb1c5ee0448d8d2084f03fcce, type: 2}
+  _health: 0
 --- !u!114 &2348334562985076813
 MonoBehaviour:
   m_ObjectHideFlags: 0

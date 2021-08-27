@@ -17,4 +17,4 @@ MonoBehaviour:
   _displayName: "\xABHot Spike\xBB"
   _name: walk_speed
   _effect: 10
-  _displayAbility: +10% walk speed
+  _displayAbility: +<X>% walk speed

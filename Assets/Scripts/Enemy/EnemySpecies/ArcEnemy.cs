@@ -18,6 +18,7 @@ public class ArcEnemy : Enemy
 
     private IEnumerator Shooting()
     {
+        yield return new WaitForSeconds(Random.Range(0, _shootPeriod));
         while (true)
         {
             for (float i = -_arcDegree * 0.5f; i <= _arcDegree * 0.5f; i += _arcDegree / (_projectilesAtOnce - 1))

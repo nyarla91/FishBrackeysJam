@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NyarlaEssentials;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RegularEnemy : Enemy
 {
@@ -17,6 +18,7 @@ public class RegularEnemy : Enemy
 
     private IEnumerator Shooting()
     {
+        yield return new WaitForSeconds(Random.Range(0, _shootPeriod));
         while (true)
         {
             ProjectileDirectionMovement newProjectile =

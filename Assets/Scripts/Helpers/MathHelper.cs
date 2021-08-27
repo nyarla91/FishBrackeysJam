@@ -49,5 +49,13 @@ namespace NyarlaEssentials
         }
     
         public static int ToPowerOf(int number, int power) => Mathf.RoundToInt(ToPowerOf(number, power));
+
+        public static float TimeSin(float min, float max, float timeScale, float timeOffset)
+        {
+            float sin = Mathf.Sin(Time.time * timeScale + timeOffset);
+            return Mathf.Lerp(min, max, (sin + 1) / 2);
+        }
+        public static float TimeSin(float min, float max, float timeScale) => TimeSin(min, max, timeScale, 0);
+        public static float TimeSin(float min, float max) => TimeSin(min, max, 1, 0);
     }
 }

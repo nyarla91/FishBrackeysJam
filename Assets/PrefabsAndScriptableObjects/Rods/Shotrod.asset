@@ -19,5 +19,5 @@ MonoBehaviour:
   _cost: 100
   _hookDamage: 10
   _meleeDamage: 16
-  _effects: 0500000014000000
+  _effects: 05000000140000002d000000
   _description: Also shoots <X0> bullets. Each of them deals <X1>% of your hook damage.

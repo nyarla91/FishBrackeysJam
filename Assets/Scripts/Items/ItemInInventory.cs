@@ -45,6 +45,7 @@ public class ItemInInventory : Transformer
         if (_ammount > 1)
         {
             newEffect += $"({_item.Effect * _ammount})";
+            print(newEffect);
         }
         StringHelper.Replace(ref ability, "<X>", newEffect);
         ItemTooltip.instance.Show(_item.DisplayName, ability);

@@ -9,6 +9,7 @@ public class Shop : Transformer
 {
     private static Shop _instance;
 
+    [SerializeField] private FishWindow _fishWindow;
     [SerializeField] private ShopTab _startingTab;
     [SerializeField] private TextMeshProUGUI _moneyCounter;
     
@@ -53,6 +54,7 @@ public class Shop : Transformer
 
     public static void Show()
     {
+        _instance._fishWindow.GenerateContent();
         _instance.targetX = 0;
         _instance._startingTab.Open();
         Player.Movement.FreezeControls++;

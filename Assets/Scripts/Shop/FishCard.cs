@@ -13,7 +13,8 @@ public class FishCard : Transformer
     [SerializeField] private TextMeshProUGUI _sellText;
     [SerializeField] private TextMeshProUGUI _ammountText;
 
-    private FishInfo _fish; 
+    private FishInfo _fish;
+    public FishInfo Fish => _fish;
     
     private float _targetX;
     public float TargetX
@@ -45,12 +46,12 @@ public class FishCard : Transformer
         }
     }
 
-    public void Init(FishInfo fish)
+    public void Init(FishInfo fish, int newAmmount)
     {
-        Ammount = 1;
+        Ammount = newAmmount;
         _fish = fish;
         _sprite.sprite = _fish.Sprite;
-        _eatText.text = $"Eat ({_fish.HealthRestored} HP)";
+        _eatText.text = $"Eat ({_fish.HealthRestored * (1 + Items.GetEffectAsPercent("fish_heal"))} HP)";
         _sellText.text = $"Sell ({_fish.Cost} $)";
         TargetX = rectTransform.anchoredPosition.x;
     }
@@ -62,7 +63,7 @@ public class FishCard : Transformer
 
     public void Eat()
     {
-        Player.Status.RestoreHealth(_fish.HealthRestored);
+        Player.Status.RestoreHealth(_fish.HealthRestored * (1 + Items.GetEffectAsPercent("fish_heal")));
         Spend();
     }
 
