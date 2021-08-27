@@ -7,8 +7,8 @@ using UnityEngine.PlayerLoop;
 
 public class ProjectileDirectionMovement : ProjectileMovement
 {
-    private Vector2 _direction;
-    protected float _speed;
+    [SerializeField] protected Vector2 _direction;
+    [SerializeField] protected float _speed;
 
     public void Init(Vector2 direction, float speed)
     {

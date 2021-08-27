@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 577e8d138a0589442b5bbb4463490bb1, type: 3}
-  m_Name: ToyShark
+  m_Name: Magnifer
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: 506edb2e0fd014347bdfd11dc3fd1516, type: 3}
+  _sprite: {fileID: 21300000, guid: caf3902a154223747beee0ccab86708f, type: 3}
   _cost: 20
-  _displayName: Toy shark
+  _displayName: Magnifer
   _name: close_defence
   _effect: 10
   _displayAbility: -<X>% taken damage while you are close to the sea

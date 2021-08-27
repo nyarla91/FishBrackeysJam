@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: bow
   _displayName: Fishing bow
-  _spriteFull: {fileID: -5365736768485744686, guid: 4b32a01781059a9439e4217d6a96a937, type: 3}
-  _spriteAttack: {fileID: -7817118122914509082, guid: 4b32a01781059a9439e4217d6a96a937, type: 3}
+  _spriteFull: {fileID: -2220830767939005032, guid: f87d54c17cf5cb84dab649a7d67273d2, type: 3}
+  _spriteAttack: {fileID: 1705355164810828853, guid: f87d54c17cf5cb84dab649a7d67273d2, type: 3}
   _cost: 100
   _hookDamage: 10
   _meleeDamage: 20

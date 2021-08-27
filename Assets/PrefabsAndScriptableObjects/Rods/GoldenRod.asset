@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: golden
   _displayName: Golden rod
-  _spriteFull: {fileID: -5365736768485744686, guid: 4b32a01781059a9439e4217d6a96a937, type: 3}
-  _spriteAttack: {fileID: -7817118122914509082, guid: 4b32a01781059a9439e4217d6a96a937, type: 3}
+  _spriteFull: {fileID: -3905469001504591795, guid: efb9834606fd3d24b80b090d80f80388, type: 3}
+  _spriteAttack: {fileID: 7626731683298256092, guid: efb9834606fd3d24b80b090d80f80388, type: 3}
   _cost: 100
   _hookDamage: 12
   _meleeDamage: 18

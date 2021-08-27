@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 577e8d138a0589442b5bbb4463490bb1, type: 3}
-  m_Name: TeddyTiger
+  m_Name: Binoculars
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: a0b2817cb7f98b247b64d8c6d9206d3a, type: 3}
-  _cost: 40
-  _displayName: Teddy tiger
-  _name: no_immune
-  _effect: 20
-  _displayAbility: You cannot be invulnerable. +<X>% damage
+  _sprite: {fileID: 21300000, guid: 968b6716b1cd2f041a2a905d6423df92, type: 3}
+  _cost: 20
+  _displayName: Binoculars
+  _name: far_defence
+  _effect: 10
+  _displayAbility: -<X>% taken damage while you are far from the sea

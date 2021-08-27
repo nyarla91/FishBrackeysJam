@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ce7f33e2a40af4f8173eff51254ad2, type: 3}
   m_Name: Round3
   m_EditorClassIdentifier: 
-  _waves: 0e0000001000000012000000
+  _waves: 070000000700000012000000
   _enemies:
   - {fileID: 11400000, guid: 68508c66c7008e94382b062c46cc6dad, type: 2}
   - {fileID: 11400000, guid: 4371cff6ea8372246a6238784cbab828, type: 2}
