@@ -26,6 +26,7 @@ public class DunkeLoot : MonoBehaviour
             ProjectileDirectionMovement newProjectile =
                 Instantiate(_projectilePrefab, transform.position, Quaternion.identity)
                     .GetComponent<ProjectileDirectionMovement>();
+            newProjectile.transform.parent = transform;
             newProjectile.Init(direction, _speed);
         }
     }

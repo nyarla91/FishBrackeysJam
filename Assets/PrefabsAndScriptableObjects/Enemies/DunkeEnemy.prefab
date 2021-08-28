@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b48988777a1a74b9b5c54c4fe891d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 1131691698051701058}
   _status: {fileID: 1131691698051701062}
   _projectilePrefab: {fileID: 8596055121092996141, guid: 585dbd0053ee1a24bb9aa0fde44e2dd7, type: 3}
   _ui: {fileID: 1131691698051701063}

@@ -20,5 +20,5 @@ MonoBehaviour:
   _cost: 60
   _hookDamage: 12
   _meleeDamage: 18
-  _effects: 14000000
+  _effects: 0a000000
   _description: Kill <X0> enemies to gain ancient power

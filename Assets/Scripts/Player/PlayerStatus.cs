@@ -8,6 +8,9 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] private float _healthMax;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Sprite _deadSprite;
+    [SerializeField] private GameObject _jawsPrefab;
     public float HealthMax
     {
         get => _healthMax;
@@ -70,11 +73,20 @@ public class PlayerStatus : MonoBehaviour
 
             float healthPercentBeforeDamage = HealthPercent;
             Health -= damage;
-            if (healthPercentBeforeDamage >= 0.5f && HealthPercent < 0.5f)
-                HealthFellBelowHalf = true;
-            //StopAllCoroutines();
-            StartCoroutine(TurnRedOnDamage());
-            Immunity(0.5f + Items.GetEffect("iframe"));
+            if (Health > 0)
+            {
+                if (healthPercentBeforeDamage >= 0.5f && HealthPercent < 0.5f)
+                    HealthFellBelowHalf = true;
+                StopAllCoroutines();
+                StartCoroutine(TurnRedOnDamage());
+                Immunity(0.5f + Items.GetEffect("iframe"));
+            }
+            else
+            {
+                Health = 0;
+                StopAllCoroutines();
+                StartCoroutine(Die());
+            }
         }
     }
 
@@ -110,5 +122,23 @@ public class PlayerStatus : MonoBehaviour
             newGB = Mathf.Lerp(Player.SpriteRenderer.color.g, 1f, 5 * Time.deltaTime);
             Player.SpriteRenderer.color = new Color(1, newGB, newGB, Player.SpriteRenderer.color.a);
         }
+    }
+
+    private IEnumerator Die()
+    {
+        Player.Movement.StopAllCoroutines();
+        Destroy(Map.transform.gameObject);
+        Player.UI.Hide();
+        RodInHands.instance.Hide();
+        RodInHands.instance.attacking = true;
+        Player.Movement.FreezeControls = 100;
+        _animator.enabled = false;
+        _spriteRenderer.sprite = _deadSprite;
+        yield return new WaitForSeconds(1);
+        Instantiate(_jawsPrefab, transform.position + Vector3.back, Quaternion.identity);
+        yield return new WaitForSeconds(4);
+        Player.UI.Show();
+        Result.Show(false);
+        yield break;
     }
 }

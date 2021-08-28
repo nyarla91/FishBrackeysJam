@@ -70,6 +70,7 @@ public class FishCard : Transformer
     public void Sell()
     {
         Shop.Money += _fish.Cost;
+        Result.moneyEarned += _fish.Cost;
         Spend();
     }
 

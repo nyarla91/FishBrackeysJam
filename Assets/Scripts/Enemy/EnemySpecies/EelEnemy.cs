@@ -6,8 +6,9 @@ public class EelEnemy : Enemy
 {
     [SerializeField] private float _period;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(Shooting());
     }
 
@@ -17,9 +18,9 @@ public class EelEnemy : Enemy
         while (true)
         {
             ProjectileWaveMovement newProjectile = Instantiate(_projectilePrefab, transform.position, Quaternion.identity).GetComponent<ProjectileWaveMovement>();
+            newProjectile.transform.parent = transform;
             newProjectile.Init(Direction);
             yield return new WaitForSeconds(_period);
         }
-        yield break;
     }
 }

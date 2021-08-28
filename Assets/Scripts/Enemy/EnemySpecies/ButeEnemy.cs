@@ -10,8 +10,9 @@ public class ButeEnemy : Enemy
     [SerializeField] private int _projectiles;
     [SerializeField] private float _speed;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(Shooting());
     }
 
@@ -25,6 +26,7 @@ public class ButeEnemy : Enemy
                 position += (Vector3) VectorHelper.Rotate(Direction, ((float) i / _projectiles) * 360) * 20;
                 ProjectileDirectionMovement newProjectile =
                     Instantiate(_projectilePrefab, position, Quaternion.identity).GetComponent<ProjectileDirectionMovement>();
+                newProjectile.transform.parent = transform;
                 newProjectile.Init(transform.position - position, _speed);
             }
             yield return new WaitForSeconds(_period);

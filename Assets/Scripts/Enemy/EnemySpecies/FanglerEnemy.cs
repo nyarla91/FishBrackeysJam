@@ -11,8 +11,9 @@ public class FanglerEnemy : Enemy
     [SerializeField] private float _cooldown;
     [SerializeField] private float _speed;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(Shooting());
     }
 
@@ -27,6 +28,7 @@ public class FanglerEnemy : Enemy
                 ProjectileDirectionMovement newProjectile =
                     Instantiate(_projectilePrefab, transform.position, Quaternion.identity)
                         .GetComponent<ProjectileDirectionMovement>();
+                newProjectile.transform.parent = transform;
                 newProjectile.Init(Direction, _speed);
             }
             yield return new WaitForSeconds(_cooldown);

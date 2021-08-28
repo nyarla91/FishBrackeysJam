@@ -64,13 +64,15 @@ public class Rounds : MonoBehaviour
 
                 Vector3 position = VectorHelper.RandomPointInBounds(_enemyPlacementBounds.bounds);
                 enemies.Add(Instantiate(newEnemy.Enemy, position, Quaternion.identity));
-
+                enemies[enemies.Count - 1].transform.parent = Map.transform;
                 j += newEnemy.Level;
             }
             yield return new WaitUntil(() => enemies.Count == 0);
             yield return new WaitForSeconds(1);
         }
-        CurrentPhase = Phase.Shop;
+        Result.roundsPassed++;
+        if (currentRoundIndex < 10)
+            CurrentPhase = Phase.Shop;
     }
 
     private IEnumerator FishMove()

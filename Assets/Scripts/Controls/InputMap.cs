@@ -141,6 +141,123 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Tutorial"",
+            ""id"": ""6fd3fe25-4b5b-4aee-83ff-15c507ed56b0"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e3dd9fe-1681-45a2-8fcc-ad11a05a463c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2aa3882-df37-4736-b9e9-3f629d375766"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MeleeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""e803b54b-afd5-463b-a424-2925c4e0c6f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""HookAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""11a20a5a-f8a4-456d-83fc-376d412dd506"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1e8d905e-5bf8-4d83-909e-1e30b64c43f5"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""335b824d-c791-4130-9c09-83effbe45905"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebba462b-225a-4f4e-acd3-432f136778e8"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15318f77-54df-4c3e-b49d-d5cd121aebdf"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8402df7-dc5e-4fc2-902a-cc2f2b297c70"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a89cb2c5-5c84-40eb-9556-e35d1047feab"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""MeleeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29c0b626-a6ae-49bb-81fc-3240c45185ce"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""HookAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -168,6 +285,12 @@ public class @InputMap : IInputActionCollection, IDisposable
         m_Gameplay_MeleeAttack = m_Gameplay.FindAction("MeleeAttack", throwIfNotFound: true);
         m_Gameplay_RangedAttack = m_Gameplay.FindAction("RangedAttack", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
+        // Tutorial
+        m_Tutorial = asset.FindActionMap("Tutorial", throwIfNotFound: true);
+        m_Tutorial_Move = m_Tutorial.FindAction("Move", throwIfNotFound: true);
+        m_Tutorial_Dash = m_Tutorial.FindAction("Dash", throwIfNotFound: true);
+        m_Tutorial_MeleeAttack = m_Tutorial.FindAction("MeleeAttack", throwIfNotFound: true);
+        m_Tutorial_HookAttack = m_Tutorial.FindAction("HookAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -270,6 +393,63 @@ public class @InputMap : IInputActionCollection, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Tutorial
+    private readonly InputActionMap m_Tutorial;
+    private ITutorialActions m_TutorialActionsCallbackInterface;
+    private readonly InputAction m_Tutorial_Move;
+    private readonly InputAction m_Tutorial_Dash;
+    private readonly InputAction m_Tutorial_MeleeAttack;
+    private readonly InputAction m_Tutorial_HookAttack;
+    public struct TutorialActions
+    {
+        private @InputMap m_Wrapper;
+        public TutorialActions(@InputMap wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Tutorial_Move;
+        public InputAction @Dash => m_Wrapper.m_Tutorial_Dash;
+        public InputAction @MeleeAttack => m_Wrapper.m_Tutorial_MeleeAttack;
+        public InputAction @HookAttack => m_Wrapper.m_Tutorial_HookAttack;
+        public InputActionMap Get() { return m_Wrapper.m_Tutorial; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TutorialActions set) { return set.Get(); }
+        public void SetCallbacks(ITutorialActions instance)
+        {
+            if (m_Wrapper.m_TutorialActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_TutorialActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_TutorialActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_TutorialActionsCallbackInterface.OnMove;
+                @Dash.started -= m_Wrapper.m_TutorialActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_TutorialActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_TutorialActionsCallbackInterface.OnDash;
+                @MeleeAttack.started -= m_Wrapper.m_TutorialActionsCallbackInterface.OnMeleeAttack;
+                @MeleeAttack.performed -= m_Wrapper.m_TutorialActionsCallbackInterface.OnMeleeAttack;
+                @MeleeAttack.canceled -= m_Wrapper.m_TutorialActionsCallbackInterface.OnMeleeAttack;
+                @HookAttack.started -= m_Wrapper.m_TutorialActionsCallbackInterface.OnHookAttack;
+                @HookAttack.performed -= m_Wrapper.m_TutorialActionsCallbackInterface.OnHookAttack;
+                @HookAttack.canceled -= m_Wrapper.m_TutorialActionsCallbackInterface.OnHookAttack;
+            }
+            m_Wrapper.m_TutorialActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
+                @MeleeAttack.started += instance.OnMeleeAttack;
+                @MeleeAttack.performed += instance.OnMeleeAttack;
+                @MeleeAttack.canceled += instance.OnMeleeAttack;
+                @HookAttack.started += instance.OnHookAttack;
+                @HookAttack.performed += instance.OnHookAttack;
+                @HookAttack.canceled += instance.OnHookAttack;
+            }
+        }
+    }
+    public TutorialActions @Tutorial => new TutorialActions(this);
     private int m_MouseKeyboardSchemeIndex = -1;
     public InputControlScheme MouseKeyboardScheme
     {
@@ -285,5 +465,12 @@ public class @InputMap : IInputActionCollection, IDisposable
         void OnMeleeAttack(InputAction.CallbackContext context);
         void OnRangedAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+    }
+    public interface ITutorialActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnMeleeAttack(InputAction.CallbackContext context);
+        void OnHookAttack(InputAction.CallbackContext context);
     }
 }

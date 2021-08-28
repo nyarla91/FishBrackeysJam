@@ -121,7 +121,6 @@ public class RodInHands : Transformer
         }
         else
         {
-            print("spearod");
             _graphics.localScale = Vector3.one * 2;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             float xOffset = 0;

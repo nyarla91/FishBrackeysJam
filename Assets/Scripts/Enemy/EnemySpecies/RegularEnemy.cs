@@ -10,8 +10,9 @@ public class RegularEnemy : Enemy
     [SerializeField] private float _shootPeriod;
     [SerializeField] private float _projectileSpeed;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(Shooting());
     }
 
@@ -22,6 +23,7 @@ public class RegularEnemy : Enemy
         {
             ProjectileDirectionMovement newProjectile =
                 ProjectileLifecycle.Create<ProjectileDirectionMovement>(_projectilePrefab, transform.position);
+            newProjectile.transform.parent = transform;
             newProjectile.Init(Direction, _projectileSpeed);
             yield return new WaitForSeconds(_shootPeriod);
         }

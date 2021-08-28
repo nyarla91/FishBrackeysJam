@@ -218,9 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759ce4e49b9cf7e4f905b6204197e363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 8742872132756540410}
   _status: {fileID: 8742872132756540414}
-  _ui: {fileID: 8742872132756540415}
   _projectilePrefab: {fileID: 8433581363071025233, guid: 6a7a9c770756f2845ac4bb8ce6678450, type: 3}
+  _ui: {fileID: 8742872132756540415}
   _projectilesAtOnce: 3
   _arcDegree: 120
   _shootPeriod: 1.5

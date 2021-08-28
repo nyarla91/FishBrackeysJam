@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586800c22c4b2764c8cb7f88c93d4ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5009785533869223673}
   _status: {fileID: 5009785533869223677}
   _projectilePrefab: {fileID: 3956549761154554892, guid: 195d0efaf32f050478e1abeea339c6e2, type: 3}
   _ui: {fileID: 5009785533869223676}
@@ -311,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374d1d97a9e9029479dbc62e0bcd4705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthMax: 225
+  _healthMax: 275
   _lootPrefab: {fileID: 4605455515749277364, guid: a9528f548c609cf42bbd29807a952da0, type: 3}
   _loot: {fileID: 11400000, guid: 3d936c2e2a6cca14cb2f4956579a315e, type: 2}
   _health: 0

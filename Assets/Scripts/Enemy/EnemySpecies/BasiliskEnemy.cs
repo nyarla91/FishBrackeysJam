@@ -13,8 +13,9 @@ public class BasiliskEnemy : Enemy
     [SerializeField] private float _warningSpeed;
     [SerializeField] private float _speed;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(Shooting());
     }
 
@@ -27,6 +28,7 @@ public class BasiliskEnemy : Enemy
             ProjectileDirectionMovement newProjectile =
                 Instantiate(_projectilePrefab, transform.position, Quaternion.identity)
                     .GetComponent<ProjectileDirectionMovement>();
+            newProjectile.transform.parent = transform;
             newProjectile.Init(_lockOnDirection, _warningSpeed);
             yield return new WaitForSeconds(_lineDelay);
             for (int i = 0; i < _projectilesPerLine; i++)

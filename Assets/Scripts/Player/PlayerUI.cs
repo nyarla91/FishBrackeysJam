@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerUI : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup _ui;
     [SerializeField] private RectTransform _healthBackground;
     [SerializeField] private RectTransform _healthForeground;
     [SerializeField] private TextMeshProUGUI _healthText;
@@ -13,6 +14,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject _itemPrefab;
     
     private Dictionary<ItemInfo, ItemInInventory> _items = new Dictionary<ItemInfo, ItemInInventory>();
+
+    private Coroutine _hideShow;
 
     public void UpdateHealth(float health, float maxHealth)
     {
@@ -35,5 +38,31 @@ public class PlayerUI : MonoBehaviour
             newItem.Init(item);
             _items.Add(item, newItem);
         }
+    }
+
+    public void Hide()
+    {
+        _ui.interactable = _ui.blocksRaycasts = false;
+        if (_hideShow != null)
+            StopCoroutine(_hideShow);
+        _hideShow = StartCoroutine(Blend(0));
+    }
+
+    public void Show()
+    {
+        _ui.interactable = _ui.blocksRaycasts = true;
+        if (_hideShow != null)
+            StopCoroutine(_hideShow);
+        _hideShow = StartCoroutine(Blend(1));
+    }
+
+    private IEnumerator Blend(float targetAlpha)
+    {
+        while (Mathf.Abs(_ui.alpha - targetAlpha) > 0.01f)
+        {
+            _ui.alpha = Mathf.Lerp(_ui.alpha, targetAlpha, Time.deltaTime * 7);
+            yield return null;
+        }
+        _ui.alpha = targetAlpha;
     }
 }

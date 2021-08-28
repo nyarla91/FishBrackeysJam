@@ -12,6 +12,7 @@ public class Shop : Transformer
     [SerializeField] private FishWindow _fishWindow;
     [SerializeField] private ShopTab _startingTab;
     [SerializeField] private TextMeshProUGUI _moneyCounter;
+    [SerializeField] private List<Attention> _attentions;
     
     private List<IShopWindow> _windows = new List<IShopWindow>();
     private float targetX = -1920;
@@ -46,6 +47,10 @@ public class Shop : Transformer
 
     public static void GenerateContent()
     {
+        foreach (var attention in _instance._attentions)
+        {
+            attention.Show();
+        }
         foreach (var window in _instance._windows)
         {
             window.GenerateContent();

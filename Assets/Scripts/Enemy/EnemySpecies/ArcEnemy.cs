@@ -10,8 +10,9 @@ public class ArcEnemy : Enemy
     [SerializeField] private float _shootPeriod;
     [SerializeField] private float _projectileSpeed;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(Shooting());
     }
 
@@ -24,6 +25,7 @@ public class ArcEnemy : Enemy
             {
                 ProjectileDirectionMovement newProjectile =
                     ProjectileLifecycle.Create<ProjectileDirectionMovement>(_projectilePrefab, transform.position);
+                newProjectile.transform.parent = transform;
                 Vector2 direction = VectorHelper.Rotate(Direction, i);
                 newProjectile.Init(direction, _projectileSpeed);
             }

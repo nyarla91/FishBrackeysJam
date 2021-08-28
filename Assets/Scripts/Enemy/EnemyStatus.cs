@@ -50,6 +50,7 @@ public class EnemyStatus : EnemyComponent
             damage *= 3;
         
         Health -= damage;
+        Result.damageDealt += damage;
         if (Rods.CurrentRod.Name.Equals("vampire"))
         {
             Player.Status.RestoreHealth(Rods.CurrentRod.GetEffectAsPercent(0) * damage);

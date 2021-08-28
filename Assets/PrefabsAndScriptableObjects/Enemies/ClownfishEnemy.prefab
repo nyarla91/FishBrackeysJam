@@ -195,9 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b48988777a1a74b9b5c54c4fe891d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 2348334562985076808}
   _status: {fileID: 2348334562985076812}
-  _ui: {fileID: 2348334562985076813}
   _projectilePrefab: {fileID: 734810318013239893, guid: e06b1046dbbfeaa4f82ef7b1f071627d, type: 3}
+  _ui: {fileID: 2348334562985076813}
   _shootPeriod: 1
   _projectileSpeed: 0.1
 --- !u!114 &2348334562985076812

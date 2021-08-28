@@ -68,6 +68,7 @@ public class RodCard : MonoBehaviour
             Sold = true;
             Rods.CurrentRod = _rod;
             Rods.CurrentRodStatsMultiplier = Rounds.RodStatsMultiplier;
+            Result.lastRod = Rods.CurrentRod.DisplayName;
             _currentRod.Init(Rods.CurrentRod);
         }
     }
