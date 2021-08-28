@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ArcEnemy : Enemy
 {
-    [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private int _projectilesAtOnce;
     [SerializeField] [Range (0, 360)] private float _arcDegree;
     [SerializeField] private float _shootPeriod;
@@ -25,7 +24,7 @@ public class ArcEnemy : Enemy
             {
                 ProjectileDirectionMovement newProjectile =
                     ProjectileLifecycle.Create<ProjectileDirectionMovement>(_projectilePrefab, transform.position);
-                Vector2 direction = VectorHelper.Rotate(Player.Transform.position - transform.position, i);
+                Vector2 direction = VectorHelper.Rotate(Direction, i);
                 newProjectile.Init(direction, _projectileSpeed);
             }
             yield return new WaitForSeconds(_shootPeriod);

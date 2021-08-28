@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 
 public class RegularEnemy : Enemy
 {
-    [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private float _shootPeriod;
     [SerializeField] private float _projectileSpeed;
 
@@ -23,8 +22,7 @@ public class RegularEnemy : Enemy
         {
             ProjectileDirectionMovement newProjectile =
                 ProjectileLifecycle.Create<ProjectileDirectionMovement>(_projectilePrefab, transform.position);
-            Vector2 direction = Player.Transform.position - transform.position;
-            newProjectile.Init(direction, _projectileSpeed);
+            newProjectile.Init(Direction, _projectileSpeed);
             yield return new WaitForSeconds(_shootPeriod);
         }
     }

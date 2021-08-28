@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ce7f33e2a40af4f8173eff51254ad2, type: 3}
   m_Name: TestRound
   m_EditorClassIdentifier: 
+  _biome: {fileID: 0}
   _waves: 01000000
   _enemies:
   - {fileID: 11400000, guid: 68508c66c7008e94382b062c46cc6dad, type: 2}

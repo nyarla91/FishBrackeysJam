@@ -20,6 +20,7 @@ public class PlayerMeleeAttack : MonoBehaviour
         if (!_attackReady || RodInHands.instance.attacking)
             yield break;
         _attackReady = false;
+        transform.localScale = new Vector3(1, 1, 1);
         Vector2 overlapPosition = (Vector2) transform.position + new Vector2(_attackBox.x * 0.5f, 0);
         if (transform.localScale.x < 0)
         {

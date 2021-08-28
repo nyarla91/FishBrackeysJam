@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sharpener
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 10c7bb26e8ab3ea4ea9b9541d7258262, type: 3}
-  _cost: 40
+  _cost: 30
   _displayName: Sharpener
   _name: melee_damage
   _effect: 10

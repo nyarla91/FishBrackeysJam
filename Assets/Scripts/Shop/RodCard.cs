@@ -48,8 +48,16 @@ public class RodCard : MonoBehaviour
             _cost.text = $"{_countedCost} $";
         _ability.text = _rod.Description;
         _sprite.sprite = _rod.SpriteFull;
-        _hookDamage.text = Mathf.RoundToInt(_rod.HookDamage * Rounds.RodStatsMultiplier).ToString();
-        _meleeDamage.text = Mathf.RoundToInt(_rod.MeleeDamage * Rounds.RodStatsMultiplier).ToString();
+        if (Current)
+        {
+            _hookDamage.text = Mathf.RoundToInt(_rod.HookDamage * Rods.CurrentRodStatsMultiplier).ToString();
+            _meleeDamage.text = Mathf.RoundToInt(_rod.MeleeDamage * Rods.CurrentRodStatsMultiplier).ToString();
+        }
+        else
+        {
+            _hookDamage.text = Mathf.RoundToInt(_rod.HookDamage * Rounds.RodStatsMultiplier).ToString();
+            _meleeDamage.text = Mathf.RoundToInt(_rod.MeleeDamage * Rounds.RodStatsMultiplier).ToString();
+        }
     }
 
     public void Buy()

@@ -13,6 +13,9 @@ public class LootOnGround : MonoBehaviour
     private FishInfo _loot;
     public FishInfo Loot => _loot;
 
+    public delegate void LandHandler();
+    public LandHandler OnLanded;
+
 
     public void Init(Vector2 targetPoint, FishInfo loot)
     {
@@ -43,6 +46,8 @@ public class LootOnGround : MonoBehaviour
             yield return null;
         }
 
+        if (OnLanded != null)
+            OnLanded();
         _particleSystem.enableEmission = false;
         _spriteRenderer.enabled = true;
         _collider.enabled = true;

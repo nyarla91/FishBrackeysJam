@@ -16,7 +16,8 @@ MonoBehaviour:
   _displayName: Shotrod
   _spriteFull: {fileID: 701807211547410047, guid: 5f76d94468ea3fa428c94ed23baeb4f4, type: 3}
   _spriteAttack: {fileID: -3656100045052398913, guid: 5f76d94468ea3fa428c94ed23baeb4f4, type: 3}
-  _cost: 100
+  _hookTint: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+  _cost: 60
   _hookDamage: 10
   _meleeDamage: 16
   _effects: 05000000140000002d000000

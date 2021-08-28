@@ -65,6 +65,7 @@ public class Shop : Transformer
         _instance.targetX = -2000;
         Player.Movement.FreezeControls--;
         NextRoundArea.readyToReturn = true;
+        Background.SetBackground(Rounds.NextRound.Biome);
     }
 
     public void Close() => Hide();

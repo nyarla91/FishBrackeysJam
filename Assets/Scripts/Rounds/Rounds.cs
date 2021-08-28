@@ -35,6 +35,8 @@ public class Rounds : MonoBehaviour
         }
     }
 
+    public static Round NextRound => instance._rounds[instance.currentRoundIndex + 1];
+
     public List<GameObject> enemies;
     private int currentRoundIndex = -1;
 

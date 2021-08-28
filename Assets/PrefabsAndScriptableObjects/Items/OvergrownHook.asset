@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OvergrownHook
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: bc2cc86790397b948968cc858320aebe, type: 3}
-  _cost: 20
+  _cost: 35
   _displayName: Overgrown hook
   _name: half_health_hook_speed
   _effect: 50

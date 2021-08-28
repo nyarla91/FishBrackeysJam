@@ -16,7 +16,8 @@ MonoBehaviour:
   _displayName: Spearod
   _spriteFull: {fileID: -2907184652591429294, guid: fd60a37d46ca351459abfabc6e60ee92, type: 3}
   _spriteAttack: {fileID: 8305460470969509945, guid: fd60a37d46ca351459abfabc6e60ee92, type: 3}
-  _cost: 100
+  _hookTint: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  _cost: 60
   _hookDamage: 10
   _meleeDamage: 20
   _effects: 0400000001000000

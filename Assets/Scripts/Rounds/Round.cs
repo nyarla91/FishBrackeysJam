@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Round")]
 public class Round : ScriptableObject
 {
+    [SerializeField] private Sprite _biome;
+    public Sprite Biome => _biome;
+    
     [Header("Combat")]
     [SerializeField] private List<int> _waves;
     public List<int> Waves => _waves;

@@ -16,8 +16,9 @@ MonoBehaviour:
   _displayName: Cursed rod
   _spriteFull: {fileID: -5586986992629095867, guid: ef6701156685ef946a3f09d816fd51a9, type: 3}
   _spriteAttack: {fileID: -7379892423958189706, guid: ef6701156685ef946a3f09d816fd51a9, type: 3}
-  _cost: 100
-  _hookDamage: 27
-  _meleeDamage: 18
+  _hookTint: {r: 0.31621423, g: 0, b: 0.41568628, a: 1}
+  _cost: 60
+  _hookDamage: 18
+  _meleeDamage: 27
   _effects: 
   _description: You cannot restore health

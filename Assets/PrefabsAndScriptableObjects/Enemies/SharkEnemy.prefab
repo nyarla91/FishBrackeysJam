@@ -294,8 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _status: {fileID: 8158767894988194445}
-  _ui: {fileID: 8158767894988194444}
   _projectilePrefab: {fileID: 7447864183655580758, guid: 66e6c7cf959ccab4c89fdbc910c46198, type: 3}
+  _ui: {fileID: 8158767894988194444}
   _projectilesAtOnce: 7
   _arcDegree: 180
   _shootPeriod: 3
@@ -343,18 +343,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.19540977, y: -0.03592205}
+  m_Offset: {x: -0.25772786, y: -0.03592205}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 2.56}
+    oldSize: {x: 2.6666667, y: 1.7066667}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.225051, y: 0.83319354}
+  m_Size: {x: 2.0143027, y: 0.5224498}
   m_EdgeRadius: 0
 --- !u!1 &8158767895331419233
 GameObject:

@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: berserker
   _displayName: Berserker rod
-  _spriteFull: {fileID: 4018270054178228633, guid: dc83028ca64dca944b83c67c3bb69924, type: 3}
-  _spriteAttack: {fileID: 6293868445042486337, guid: dc83028ca64dca944b83c67c3bb69924, type: 3}
-  _cost: 100
-  _hookDamage: 12
-  _meleeDamage: 18
+  _spriteFull: {fileID: 5086811857381981581, guid: b94df217b88d58442a0ae949234a0e15, type: 3}
+  _spriteAttack: {fileID: -3543603012479061022, guid: b94df217b88d58442a0ae949234a0e15, type: 3}
+  _hookTint: {r: 0.41568628, g: 0.36064103, b: 0, a: 1}
+  _cost: 60
+  _hookDamage: 10
+  _meleeDamage: 20
   _effects: 01000000
   _description: +1% damage for each % of health you're missing

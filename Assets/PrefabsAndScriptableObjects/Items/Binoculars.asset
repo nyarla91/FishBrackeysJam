@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Binoculars
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 968b6716b1cd2f041a2a905d6423df92, type: 3}
-  _cost: 20
+  _cost: 25
   _displayName: Binoculars
   _name: far_defence
   _effect: 10

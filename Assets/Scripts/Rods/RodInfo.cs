@@ -18,6 +18,9 @@ public class RodInfo : ScriptableObject
     [SerializeField] private Sprite _spriteAttack;
     public Sprite SpriteAttack => _spriteAttack;
 
+    [SerializeField] private Color _hookTint;
+    public Color HookTint => _hookTint;
+
     [SerializeField] private int _cost;
     public int Cost => _cost;
 

@@ -16,8 +16,9 @@ MonoBehaviour:
   _displayName: Scraple Rod
   _spriteFull: {fileID: -8817966619579822038, guid: 6a1f5fb97bd85c54285829ccd2769a60, type: 3}
   _spriteAttack: {fileID: -4626199238161512748, guid: 6a1f5fb97bd85c54285829ccd2769a60, type: 3}
-  _cost: 100
-  _hookDamage: 12
-  _meleeDamage: 18
+  _hookTint: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  _cost: 60
+  _hookDamage: 10
+  _meleeDamage: 20
   _effects: 01000000
   _description: After killing an enemy gain immunity for <X0> seconds

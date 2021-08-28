@@ -16,7 +16,8 @@ MonoBehaviour:
   _displayName: Fishing rod
   _spriteFull: {fileID: -5365736768485744686, guid: 4b32a01781059a9439e4217d6a96a937, type: 3}
   _spriteAttack: {fileID: -7817118122914509082, guid: 4b32a01781059a9439e4217d6a96a937, type: 3}
-  _cost: 100
+  _hookTint: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  _cost: 60
   _hookDamage: 12
   _meleeDamage: 18
   _effects: 

@@ -16,8 +16,9 @@ MonoBehaviour:
   _displayName: Golden rod
   _spriteFull: {fileID: -3905469001504591795, guid: efb9834606fd3d24b80b090d80f80388, type: 3}
   _spriteAttack: {fileID: 7626731683298256092, guid: efb9834606fd3d24b80b090d80f80388, type: 3}
-  _cost: 100
-  _hookDamage: 12
-  _meleeDamage: 18
+  _hookTint: {r: 0.7075472, g: 0.6459551, b: 0, a: 1}
+  _cost: 60
+  _hookDamage: 11
+  _meleeDamage: 17
   _effects: 00000000
   _description: Your next rod costs <X0>$

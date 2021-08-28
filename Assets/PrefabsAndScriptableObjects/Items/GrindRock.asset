@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GrindRock
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 21342080f6258384c813ed88a6599f7f, type: 3}
-  _cost: 40
+  _cost: 30
   _displayName: Grind rock
   _name: hook_damage
   _effect: 10

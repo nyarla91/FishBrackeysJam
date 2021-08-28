@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lemon
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 2a6c2f0bac0d9684d9c62f4b59e05030, type: 3}
-  _cost: 20
+  _cost: 25
   _displayName: Lemon
   _name: fish_heal
   _effect: 20

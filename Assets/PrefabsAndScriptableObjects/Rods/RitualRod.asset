@@ -16,8 +16,9 @@ MonoBehaviour:
   _displayName: Ritual rod
   _spriteFull: {fileID: -8041313804677231208, guid: b4fb8826c74cdb74db4096eccd877838, type: 3}
   _spriteAttack: {fileID: -552179032436233340, guid: b4fb8826c74cdb74db4096eccd877838, type: 3}
-  _cost: 100
-  _hookDamage: 17
-  _meleeDamage: 16
+  _hookTint: {r: 1, g: 0, b: 0, a: 1}
+  _cost: 60
+  _hookDamage: 12
+  _meleeDamage: 18
   _effects: 14000000
-  _description: Kill <X0> enemies to gain great power
+  _description: Kill <X0> enemies to gain ancient power

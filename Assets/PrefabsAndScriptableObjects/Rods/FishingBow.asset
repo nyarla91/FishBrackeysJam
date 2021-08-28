@@ -16,8 +16,9 @@ MonoBehaviour:
   _displayName: Fishing bow
   _spriteFull: {fileID: -2220830767939005032, guid: f87d54c17cf5cb84dab649a7d67273d2, type: 3}
   _spriteAttack: {fileID: 1705355164810828853, guid: f87d54c17cf5cb84dab649a7d67273d2, type: 3}
-  _cost: 100
-  _hookDamage: 10
-  _meleeDamage: 20
+  _hookTint: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  _cost: 60
+  _hookDamage: 14
+  _meleeDamage: 16
   _effects: c8000000
   _description: Has double hook speed that cannot be changed by any other effect.

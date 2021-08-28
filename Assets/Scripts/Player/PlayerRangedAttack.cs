@@ -31,6 +31,8 @@ public class PlayerRangedAttack : MonoBehaviour
         
         ProjectileDirectionMovement newProjectile =
             Instantiate(_hookPrefab, transform.position, Quaternion.identity).GetComponent<ProjectileDirectionMovement>();
+        newProjectile.transform.rotation = Quaternion.Euler(0, 0, VectorHelper.Vector2ToDegrees(direction));
+        newProjectile.GetComponent<SpriteRenderer>().color = Rods.CurrentRod.HookTint;
         float speed = 0;
         if (!Rods.CurrentRod.Name.Equals("bow"))
         {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HotSpike
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: f3b6abb72986b8847b2141b975f4e94d, type: 3}
-  _cost: 1
+  _cost: 25
   _displayName: "\xABHot Spike\xBB"
   _name: walk_speed
   _effect: 10

@@ -16,8 +16,9 @@ MonoBehaviour:
   _displayName: Spinning rod
   _spriteFull: {fileID: -6191508540093371779, guid: 4649c7585b4178145b98915a5dd0f0e7, type: 3}
   _spriteAttack: {fileID: 2136473608258497488, guid: 4649c7585b4178145b98915a5dd0f0e7, type: 3}
-  _cost: 100
-  _hookDamage: 12
-  _meleeDamage: 18
+  _hookTint: {r: 0.08243312, g: 0.41568628, b: 0, a: 1}
+  _cost: 60
+  _hookDamage: 13
+  _meleeDamage: 17
   _effects: 
   _description: You can move while throwing a hook

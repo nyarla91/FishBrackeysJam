@@ -16,8 +16,9 @@ MonoBehaviour:
   _displayName: Vampire rod
   _spriteFull: {fileID: -6569109414003131091, guid: 6b2d4e723016e3e458c9aeb9207cffca, type: 3}
   _spriteAttack: {fileID: -8381752504004796880, guid: 6b2d4e723016e3e458c9aeb9207cffca, type: 3}
-  _cost: 100
+  _hookTint: {r: 0.41010135, g: 0, b: 0.8962264, a: 1}
+  _cost: 60
   _hookDamage: 12
-  _meleeDamage: 24
+  _meleeDamage: 18
   _effects: 05000000
   _description: Restore <X0>% from damage this rod deals.
