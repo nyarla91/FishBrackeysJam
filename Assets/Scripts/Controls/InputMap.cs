@@ -132,7 +132,7 @@ public class @InputMap : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""52cb8092-7d1d-4a18-89dd-0e87d0550a66"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -227,7 +227,7 @@ public class @InputMap : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e8402df7-dc5e-4fc2-902a-cc2f2b297c70"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MouseKeyboard"",
@@ -254,6 +254,33 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseKeyboard"",
                     ""action"": ""HookAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""3d56956b-9419-48f5-b097-a970b74bf1cb"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""5790d70c-e443-4afd-bd92-00ebede879b6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a897dd00-b2a2-4176-87bd-000dd1b8c652"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -291,6 +318,9 @@ public class @InputMap : IInputActionCollection, IDisposable
         m_Tutorial_Dash = m_Tutorial.FindAction("Dash", throwIfNotFound: true);
         m_Tutorial_MeleeAttack = m_Tutorial.FindAction("MeleeAttack", throwIfNotFound: true);
         m_Tutorial_HookAttack = m_Tutorial.FindAction("HookAttack", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -450,6 +480,39 @@ public class @InputMap : IInputActionCollection, IDisposable
         }
     }
     public TutorialActions @Tutorial => new TutorialActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Pause;
+    public struct MenuActions
+    {
+        private @InputMap m_Wrapper;
+        public MenuActions(@InputMap wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Menu_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     private int m_MouseKeyboardSchemeIndex = -1;
     public InputControlScheme MouseKeyboardScheme
     {
@@ -472,5 +535,9 @@ public class @InputMap : IInputActionCollection, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnMeleeAttack(InputAction.CallbackContext context);
         void OnHookAttack(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

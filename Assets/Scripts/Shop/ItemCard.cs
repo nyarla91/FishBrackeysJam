@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NyarlaEssentials.Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,6 +46,7 @@ public class ItemCard : MonoBehaviour
     {
         if (Shop.Money >= _countedCost)
         {
+            SoundPlayer.Play("buy", 1);
             Shop.Money -= _countedCost;
             Sold = true;
             Player.UI.AddItem(_item);

@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using NyarlaEssentials;
+using NyarlaEssentials.Sound;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerRangedAttack : MonoBehaviour
 {
@@ -15,14 +17,20 @@ public class PlayerRangedAttack : MonoBehaviour
 
     private void Awake()
     {
-        Controls.InputMap.Gameplay.RangedAttack.performed += ctx => StartCoroutine(Attack());
+    }
+
+    private void Attack(InputAction.CallbackContext ctx)
+    {
+        StartCoroutine(Attack());
     }
 
     private IEnumerator Attack()
     {
-        if (!_attackReady || RodInHands.instance.attacking)
+        if (!_attackReady || RodInHands.instance.attacking || Player.Status.Dead || Shop.Open)
             yield break;
+        
         _attackReady = false;
+        SoundPlayer.Play("hookThrow", 1);
         if (!Rods.CurrentRod.Name.Equals("spinning"))
             Player.Movement.FreezeControls++;
 
@@ -53,6 +61,7 @@ public class PlayerRangedAttack : MonoBehaviour
 
         if (Rods.CurrentRod.Name.Equals("shotrod"))
         {
+            SoundPlayer.Play("shotrod", 1);
             for (int i = 0; i < Rods.CurrentRod.Effects[0]; i++)
             {
                 float t = MathHelper.Evaluate(i, 0, Rods.CurrentRod.Effects[0] - 1);
@@ -76,5 +85,15 @@ public class PlayerRangedAttack : MonoBehaviour
     private void ProjectileDestroyed(ref bool destroyed)
     {
         destroyed = true;
+    }
+
+    private void OnEnable()
+    {
+        Controls.InputMap.Gameplay.RangedAttack.performed += Attack;
+    }
+
+    private void OnDisable()
+    {
+        Controls.InputMap.Gameplay.RangedAttack.performed -= ctx => StartCoroutine(Attack());
     }
 }

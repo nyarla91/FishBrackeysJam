@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using NyarlaEssentials.Sound;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMeleeAttack : MonoBehaviour
 {
@@ -12,14 +14,17 @@ public class PlayerMeleeAttack : MonoBehaviour
     
     private void Awake()
     {
-        Controls.InputMap.Gameplay.MeleeAttack.performed += ctx => StartCoroutine(Attack());
+        Controls.InputMap.Gameplay.MeleeAttack.performed += Attack;
     }
+
+    private void Attack(InputAction.CallbackContext context) =>  StartCoroutine(Attack());
 
     private IEnumerator Attack()
     {
-        if (!_attackReady || RodInHands.instance.attacking)
+        if (!_attackReady || RodInHands.instance.attacking || Player.Status.Dead || Shop.Open)
             yield break;
         _attackReady = false;
+        SoundPlayer.Play("melee", 1);
         transform.localScale = new Vector3(1, 1, 1);
         Vector2 overlapPosition = (Vector2) transform.position + new Vector2(_attackBox.x * 0.5f, 0);
         if (transform.localScale.x < 0)
@@ -39,5 +44,15 @@ public class PlayerMeleeAttack : MonoBehaviour
         }
         yield return new WaitForSeconds(_cooldown);
         _attackReady = true;
+    }
+
+    private void OnEnable()
+    {
+        Controls.InputMap.Gameplay.MeleeAttack.performed += Attack;
+    }
+
+    private void OnDestroy()
+    {
+        Controls.InputMap.Gameplay.MeleeAttack.performed -= Attack;
     }
 }

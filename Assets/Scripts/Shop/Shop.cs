@@ -29,6 +29,8 @@ public class Shop : Transformer
         }
     }
 
+    public static bool Open => _instance.targetX > -1900;
+
     private void Awake()
     {
         _instance = this;
@@ -37,7 +39,7 @@ public class Shop : Transformer
 
     private void FixedUpdate()
     {
-        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, new Vector2(targetX, 0), 0.25f);
+        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, new Vector2(targetX, 0), 0.15f);
     }
 
     public static void AddIShopWindow(IShopWindow added)
@@ -63,6 +65,7 @@ public class Shop : Transformer
         _instance.targetX = 0;
         _instance._startingTab.Open();
         Player.Movement.FreezeControls++;
+        Music.instance.Play(Music.instance.ShopTheme);
     }
     
     public static void Hide()
@@ -71,6 +74,7 @@ public class Shop : Transformer
         Player.Movement.FreezeControls--;
         NextRoundArea.readyToReturn = true;
         Background.SetBackground(Rounds.NextRound.Biome);
+        Music.instance.Stop();
     }
 
     public void Close() => Hide();

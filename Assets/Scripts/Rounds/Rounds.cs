@@ -55,6 +55,7 @@ public class Rounds : MonoBehaviour
 
     private IEnumerator OngoingRound(Round currentRound)
     {
+        Music.instance.Play(currentRound.Theme);
         yield return new WaitForSeconds(1);
         for (int i = 0; i < currentRound.Waves.Count; i++)
         {
@@ -71,7 +72,8 @@ public class Rounds : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         Result.roundsPassed++;
-        if (currentRoundIndex < 10)
+        Music.instance.Stop();
+        if (currentRoundIndex < 9)
             CurrentPhase = Phase.Shop;
     }
 

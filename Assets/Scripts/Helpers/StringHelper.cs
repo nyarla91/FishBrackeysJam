@@ -28,7 +28,7 @@ namespace NyarlaEssentials
                 if (Mathf.FloorToInt(seconds / 360) < 10)
                     hoursLine = "0" + hoursLine;
             }
-            return hoursLine + minutesLine + seconds;
+            return hoursLine + minutesLine + secondsLine;
         }
     }
 

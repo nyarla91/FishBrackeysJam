@@ -138,6 +138,8 @@ public class RodInHands : Transformer
         attacking = false;
     }
 
+    public void UpdateSprite() => _spriteRenderer.sprite = Rods.CurrentRod.SpriteFull;
+
     public void Show() => _spriteRenderer.enabled = true;
     public void Hide() => _spriteRenderer.enabled = false;
 }

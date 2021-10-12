@@ -115,7 +115,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 7447864183655580761}
   _direction: {x: 0, y: 0}
   _speed: 0
-  _acceleration: 0.02
+  _acceleration: 0.04
 --- !u!114 &8905380764705758841
 MonoBehaviour:
   m_ObjectHideFlags: 0

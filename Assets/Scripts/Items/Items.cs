@@ -68,4 +68,10 @@ public class Items : MonoBehaviour
             }
         }
     }
+
+    public static void Reset()
+    {
+        _itemEffects = new Dictionary<string, int>();
+        _items = new List<ItemInfo>();
+    }
 }

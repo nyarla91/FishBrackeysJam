@@ -16,5 +16,5 @@ MonoBehaviour:
   _cost: 40
   _displayName: Shiny shell
   _name: health
-  _effect: 25
+  _effect: 30
   _displayAbility: +<X> maximum health

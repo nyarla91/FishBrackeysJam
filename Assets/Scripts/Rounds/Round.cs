@@ -7,6 +7,9 @@ public class Round : ScriptableObject
 {
     [SerializeField] private Sprite _biome;
     public Sprite Biome => _biome;
+
+    [SerializeField] private AudioClip _theme;
+    public AudioClip Theme => _theme;
     
     [Header("Combat")]
     [SerializeField] private List<int> _waves;

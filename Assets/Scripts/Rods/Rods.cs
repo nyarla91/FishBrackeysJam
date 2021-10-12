@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using NyarlaEssentials.Sound;
 using UnityEngine;
 
 public class Rods : MonoBehaviour
@@ -20,6 +21,7 @@ public class Rods : MonoBehaviour
             print(_ritualKills);
             if (_ritualKills == CurrentRod.Effects[0])
             {
+                SoundPlayer.Play("ritual", 1);
                 Items.AddItem(_instance._ritualRodItem);
                 Player.UI.AddItem(_instance._ritualRodItem);
                 _ritualKills = Int32.MinValue;
@@ -50,5 +52,11 @@ public class Rods : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+    }
+
+    public static void Reset()
+    {
+        _ritualKills = 0;
+        _currentRodStatsMultiplier = 1;
     }
 }

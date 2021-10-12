@@ -75,12 +75,13 @@ public class BezierCurve
             float t = (float) i / (float) (Quality - 1);
             Path[i] = Evaluate(t);
         }
-        // Calculate Length
+        
         float result = 0;
         for (int i = 1; i < Path.Length; i++)
         {
             result += Vector2.Distance(Path[i - 1], Path[i]);
         }
+        Length = result;
     }
 
     public Vector3[] ExtrudePath(float width)

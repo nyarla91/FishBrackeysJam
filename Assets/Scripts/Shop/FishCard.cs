@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NyarlaEssentials;
+using NyarlaEssentials.Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -63,12 +64,14 @@ public class FishCard : Transformer
 
     public void Eat()
     {
+        SoundPlayer.Play("heal", 1);
         Player.Status.RestoreHealth(_fish.HealthRestored * (1 + Items.GetEffectAsPercent("fish_heal")));
         Spend();
     }
 
     public void Sell()
     {
+        SoundPlayer.Play("sell", 1);
         Shop.Money += _fish.Cost;
         Result.moneyEarned += _fish.Cost;
         Spend();

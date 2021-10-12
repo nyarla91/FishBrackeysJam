@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using NyarlaEssentials;
-using Unity.XR.GoogleVr;
+using NyarlaEssentials.Sound;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : Transformer
 {
@@ -31,7 +32,7 @@ public class PlayerMovement : Transformer
     private void Awake()
     {
         Controls.InputMap.Gameplay.Enable();
-        Controls.InputMap.Gameplay.Dash.performed += ctx => StartCoroutine(Dash());
+        Controls.InputMap.Gameplay.Dash.performed += Dash;
     }
 
     private void FixedUpdate()
@@ -57,14 +58,20 @@ public class PlayerMovement : Transformer
         }
     }
 
+    private void Dash(InputAction.CallbackContext ctx)
+    {
+        StartCoroutine(Dash());
+    }
+
     private IEnumerator Dash()
     {
         Vector2 dashDirection = Controls.InputMap.Gameplay.Move.ReadValue<Vector2>();
-        if (!_dashReady || dashDirection.magnitude <= 0)
+        if (!_dashReady || dashDirection.magnitude <= 0 || FreezeControls > 0)
             yield break;
         _dashReady = false;
         FreezeControls++;
         RodInHands.instance.Hide();
+        SoundPlayer.Play("dash", 1);
         Player.Animation.Play(PlayerAnimation.DashStart);
         BezierCurve curve = new BezierCurve(new Vector3[4]);
         Vector2 targetPoint = (Vector2) transform.position + dashDirection * _dashDistance;
@@ -86,5 +93,10 @@ public class PlayerMovement : Transformer
         RodInHands.instance.Show();
         yield return new WaitForSeconds(_dashCooldown);
         _dashReady = true;
+    }
+
+    private void OnDestroy()
+    {
+        Controls.InputMap.Gameplay.Dash.performed -= Dash;
     }
 }

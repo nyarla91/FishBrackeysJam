@@ -17,26 +17,16 @@ public class Tutorial : MonoBehaviour
     private void Awake()
     {
         Controls.InputMap.Tutorial.Enable();
-        Controls.InputMap.Tutorial.Move.performed += ctx =>
-        {
-            _move = true;
-            Check();
-        };
-        Controls.InputMap.Tutorial.Dash.performed += ctx =>
-        {
-            _dash = true;
-            Check();
-        };
-        Controls.InputMap.Tutorial.MeleeAttack.performed += ctx =>
-        {
-            _meleeAttack = true;
-            Check();
-        };
-        Controls.InputMap.Tutorial.HookAttack.performed += ctx =>
-        {
-            _hookAttack = true;
-            Check();
-        };
+        Controls.InputMap.Tutorial.Move.performed += ctx => TriggerMove(out _move);
+        Controls.InputMap.Tutorial.Dash.performed += ctx => TriggerMove(out _dash);
+        Controls.InputMap.Tutorial.MeleeAttack.performed += ctx => TriggerMove(out _meleeAttack);
+        Controls.InputMap.Tutorial.HookAttack.performed += ctx => TriggerMove(out _hookAttack);
+    }
+
+    private void TriggerMove(out bool action)
+    {
+        action = true;
+        Check();
     }
 
     private void Check()
@@ -53,5 +43,14 @@ public class Tutorial : MonoBehaviour
             _canvasGroup.alpha = 1 - i;
             yield return null;
         }
+    }
+
+    private void OnDestroy()
+    {
+        Controls.InputMap.Tutorial.Enable();
+        Controls.InputMap.Tutorial.Move.performed -= ctx => TriggerMove(out _move);
+        Controls.InputMap.Tutorial.Dash.performed -= ctx => TriggerMove(out _dash);
+        Controls.InputMap.Tutorial.MeleeAttack.performed -= ctx => TriggerMove(out _meleeAttack);
+        Controls.InputMap.Tutorial.HookAttack.performed -= ctx => TriggerMove(out _hookAttack);
     }
 }

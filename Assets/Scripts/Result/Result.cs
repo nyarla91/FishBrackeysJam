@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using NyarlaEssentials;
 using TMPro;
-using UnityEditor.U2D;
 using UnityEngine;
 
 public class Result : MonoBehaviour
@@ -32,6 +31,7 @@ public class Result : MonoBehaviour
 
     public static void Show(bool victory)
     {
+        Player.Movement.FreezeControls = 100;
         instance.StartCoroutine(instance.ShowEnumerator(victory));
     }
 
@@ -42,14 +42,25 @@ public class Result : MonoBehaviour
         _resultText.text = victory ? "Victory!" : "Death";
         _lastRodCounter.text = lastRod;
         _moneyCounter.text = moneyEarned.ToString();
-        _damageCounter.text = damageDealt.ToString();
+        _damageCounter.text = Mathf.RoundToInt(damageDealt).ToString();
         _roundsCounter.text = roundsPassed.ToString();
         _timeCounter.text = StringHelper.SecondsToFormatTime(Mathf.RoundToInt(Time.time - _startingTime), false);
-        
         for (float i = 0; i < 1; i += Time.deltaTime * 2)
         {
             _canvasGroup.alpha = i;
             yield return null;
         }
+    }
+
+    public static void Reset()
+    {
+        moneyEarned = 0;
+        damageDealt = 0;
+        if (roundsPassed > 0)
+        {
+            roundsPassed = 0;
+        }
+
+        lastRod = "Fishing rod";
     }
 }

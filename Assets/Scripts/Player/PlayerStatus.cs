@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NyarlaEssentials;
+using NyarlaEssentials.Sound;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
@@ -54,11 +55,14 @@ public class PlayerStatus : MonoBehaviour
             _spriteRenderer.color = VectorHelper.SetA(_spriteRenderer.color, 1);
         }
     }
+    
+    public bool Dead { get; private set; }
 
     public void TakeDamage(float damage)
     {
         if (_immunity <= 0)
         {
+            SoundPlayer.Play("damage", 1);
             float totalBonus = 1;
             
             // Bonus calculation
@@ -76,7 +80,10 @@ public class PlayerStatus : MonoBehaviour
             if (Health > 0)
             {
                 if (healthPercentBeforeDamage >= 0.5f && HealthPercent < 0.5f)
+                {
                     HealthFellBelowHalf = true;
+                    SoundPlayer.Play("overgrownHook", 1);
+                }
                 StopAllCoroutines();
                 StartCoroutine(TurnRedOnDamage());
                 Immunity(0.5f + Items.GetEffect("iframe"));
@@ -126,7 +133,9 @@ public class PlayerStatus : MonoBehaviour
 
     private IEnumerator Die()
     {
+        Dead = true;
         Player.Movement.StopAllCoroutines();
+        Music.instance.Stop();
         Destroy(Map.transform.gameObject);
         Player.UI.Hide();
         RodInHands.instance.Hide();

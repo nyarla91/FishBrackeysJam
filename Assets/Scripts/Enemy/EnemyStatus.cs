@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using NyarlaEssentials.Sound;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -31,6 +32,7 @@ public class EnemyStatus : EnemyComponent
 
     public void TakeDamage(float damage, bool melee)
     {
+        SoundPlayer.Play("enemyDamage", 1);
         float totalBonus = 1;
         
         //Bonus calculation
@@ -48,14 +50,16 @@ public class EnemyStatus : EnemyComponent
         damage *= totalBonus;
         if (Items.GetEffect("triple") > 0)
             damage *= 3;
-        
+
+        float healthBeforeDamage = Health;
         Health -= damage;
         Result.damageDealt += damage;
         if (Rods.CurrentRod.Name.Equals("vampire"))
         {
             Player.Status.RestoreHealth(Rods.CurrentRod.GetEffectAsPercent(0) * damage);
         }
-        if (Health <= 0) Die();
+        if (healthBeforeDamage > 0 && Health <= 0)
+            Die();
     }
 
     private void Die()
@@ -64,7 +68,8 @@ public class EnemyStatus : EnemyComponent
 
         Rounds.instance.enemies.Remove(gameObject);
         LootOnGround newLoot = Instantiate(_lootPrefab, transform.position, Quaternion.identity).GetComponent<LootOnGround>();
-        newLoot.Init(LootArea.RandomPoint(), _loot);
+        newLoot.transform.parent = Map.transform;
+        newLoot.Init(_loot, LootArea.RandomPoint());
         if (Rods.CurrentRod.Name.Equals("scraple"))
         {
             Player.Status.Immunity(Rods.CurrentRod.Effects[0]);

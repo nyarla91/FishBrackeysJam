@@ -16,5 +16,5 @@ MonoBehaviour:
   _cost: 30
   _displayName: Sharpener
   _name: melee_damage
-  _effect: 10
+  _effect: 15
   _displayAbility: +<X>% melee damage

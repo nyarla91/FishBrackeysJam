@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using NyarlaEssentials;
+using NyarlaEssentials.Sound;
 using UnityEngine;
 
 public class LootOnGround : MonoBehaviour
@@ -17,7 +18,7 @@ public class LootOnGround : MonoBehaviour
     public LandHandler OnLanded;
 
 
-    public void Init(Vector2 targetPoint, FishInfo loot)
+    public void Init(FishInfo loot, Vector2 targetPoint)
     {
         _loot = loot;
         _spriteRenderer.sprite = _loot.Sprite;
@@ -48,6 +49,7 @@ public class LootOnGround : MonoBehaviour
 
         if (OnLanded != null)
             OnLanded();
+        SoundPlayer.Play("fishDrop", 1);
         _particleSystem.enableEmission = false;
         _spriteRenderer.enabled = true;
         _collider.enabled = true;

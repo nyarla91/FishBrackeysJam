@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NyarlaEssentials.Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,12 +65,14 @@ public class RodCard : MonoBehaviour
     {
         if (!Current && Shop.Money >= _countedCost)
         {
+            SoundPlayer.Play("buy", 1);
             Shop.Money -= _countedCost;
             Sold = true;
             Rods.CurrentRod = _rod;
             Rods.CurrentRodStatsMultiplier = Rounds.RodStatsMultiplier;
             Result.lastRod = Rods.CurrentRod.DisplayName;
             _currentRod.Init(Rods.CurrentRod);
+            RodInHands.instance.UpdateSprite();
         }
     }
 }

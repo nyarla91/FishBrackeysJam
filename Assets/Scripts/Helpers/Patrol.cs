@@ -6,15 +6,15 @@ namespace NyarlaEssentials
 {
 public class Patrol : Transformer
 {
-    [SerializeField] private Vector3[] path;
-    [SerializeField] private float speed;
-    [SerializeField] private float nextPointDelay;
+    [SerializeField] private Vector3[] _path;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _nextPointDelay;
     public enum LoopType
     {
         Return,
         Lap
     }
-    [SerializeField] private LoopType loopType;
+    [SerializeField] private LoopType _loopType;
     private Vector3 origin;
 
     private void Awake()
@@ -31,16 +31,45 @@ public class Patrol : Transformer
     {
         while (true)
         {
-            for (int i = 0; i < path.Length; i++){
-                yield return StartCoroutine(GoToNextPoint(path[i]));
-            }
-            if (loopType.Equals(LoopType.Return))
+            foreach (var point in _path)
             {
-                for (int i = path.Length - 2; i >= 0; i--){
-                    yield return StartCoroutine(GoToNextPoint(path[i]));
+                yield return StartCoroutine(GoToNextPoint(point));
+            }
+            if (_loopType.Equals(LoopType.Return))
+            {
+                for (int i = _path.Length - 2; i >= 0; i--){
+                    yield return StartCoroutine(GoToNextPoint(_path[i]));
                 }
             }
             yield return StartCoroutine(GoToNextPoint(Vector3.zero));
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        for (int i = 0; i < _path.Length; i++)
+        {
+            DrawCube(i);
+            DrawLine(i);
+        }
+
+        void DrawCube(int i)
+        {
+            float cubeSize = 4;
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(_path[i] + gameObject.transform.position, new Vector3(cubeSize, cubeSize, cubeSize));
+        }
+
+        void DrawLine(int i)
+        {
+            Vector3 origin;
+            if (i == 0)
+                origin = Vector3.zero;
+            else
+                origin = _path[i - 1];
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(_path[i] + gameObject.transform.position, origin + gameObject.transform.position);
         }
     }
 
@@ -48,30 +77,10 @@ public class Patrol : Transformer
     {
         point += origin;
         while (!transform.position.Equals(point)){
-            transform.position = Vector3.MoveTowards(transform.position, point, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, point, _speed * Time.deltaTime);
             yield return null;
         }
-        yield return new WaitForSeconds(nextPointDelay);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        for (int i = 0; i < path.Length; i++)
-        {
-            // Draw cubes
-            float cubeSize = 4;
-            Gizmos.color = Color.green;
-            Gizmos.DrawCube(path[i] + gameObject.transform.position, new Vector3(cubeSize, cubeSize, cubeSize));
-            // Draw lines
-            Vector3 origin;
-            if (i == 0)
-                origin = Vector3.zero;
-            else
-                origin = path[i - 1];
-            
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(path[i] + gameObject.transform.position, origin + gameObject.transform.position);
-        }
+        yield return new WaitForSeconds(_nextPointDelay);
     }
 }
 

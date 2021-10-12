@@ -15,4 +15,9 @@ public class NextRoundArea : MonoBehaviour
             readyToReturn = false;
         }
     }
+
+    public static void Reset()
+    {
+        readyToReturn = false;
+    }
 }

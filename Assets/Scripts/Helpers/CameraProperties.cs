@@ -11,9 +11,8 @@ namespace NyarlaEssentials
         public static CameraProperties instance;
         private static Camera _main;
         public static Camera Main => _main ?? (_main = instance.GetComponent<Camera>());
-    
         public static Vector3 MousePosition2D => Main.ScreenToWorldPoint(Input.mousePosition);
-
+        
         public static Vector3 PercentToScreenPoint(Vector2 percent)
         {
             percent += Vector2.one;
@@ -24,6 +23,11 @@ namespace NyarlaEssentials
         private void Awake()
         {
             instance = this;
+        }
+
+        public static void Reset()
+        {
+            _main = null;
         }
     }
 }

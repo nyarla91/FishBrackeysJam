@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoundAbyssBoss
   m_EditorClassIdentifier: 
   _biome: {fileID: 21300000, guid: d6b72902d354201489f273dd161e4394, type: 3}
+  _theme: {fileID: 8300000, guid: 08e6cfe88baa7e8459ab64d31a406353, type: 3}
   _waves: 01000000
   _enemies:
   - {fileID: 11400000, guid: 6c69d24f02d279f40be11ee2d196eb76, type: 2}
